@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({Users, Articles}) {
-      this.belongsTo(Users)
-      this.belongsTo(Articles)
+      //this.belongsTo(Users)
+      //this.belongsTo(Articles)
     }
   }
   Comments.init({
