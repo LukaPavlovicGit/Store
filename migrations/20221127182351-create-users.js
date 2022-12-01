@@ -12,7 +12,7 @@ module.exports = {
       },
       role:{
         type: DataTypes.STRING,
-        allowNull: false
+        defaultValue:"CLIENT"
       },
       first_name: {
         type: DataTypes.STRING,
@@ -40,14 +40,14 @@ module.exports = {
       },
       number_of_purchases: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue:0
       },
       createdAt: {
-        allowNull: false,
+        defaultValue: new Date(),
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        defaultValue: new Date(),
         type: Sequelize.DATE
       }
     });

@@ -49,9 +49,8 @@ route.put('/users/:id', (req, res) => {
         return res.status(401).json({message:'Unauthorized'})
 
     const validation = joi_validation.userRegistrationValidation(req.body)
-    if(validation.error){
+    if(validation.error)
         return res.send({ message: validation.error.details[0].message })
-    }
 
     Users.findOne({ where: { id: req.params.id } })
         .then(user => {
