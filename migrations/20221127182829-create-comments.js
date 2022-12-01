@@ -18,6 +18,14 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false
       },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      article_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

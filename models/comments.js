@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({Users, Articles}) {
-      //this.belongsTo(Users)
-      //this.belongsTo(Articles)
+      this.belongsTo(Users,{ foreignKey: 'user_id', as: 'user' })
+      this.belongsTo(Articles, { foreignKey: 'article_id', as: 'article' })
     }
   }
   Comments.init({
@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
     },
     text: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    article_id: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
