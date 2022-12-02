@@ -8,7 +8,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       type: {
         type: DataTypes.STRING,
@@ -27,12 +27,12 @@ module.exports = {
         allowNull: false
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        defaultValue: new Date(),
+        type: DataTypes.DATE
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        defaultValue: new Date(),
+        type: DataTypes.DATE
       }
     });
   },

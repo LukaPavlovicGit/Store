@@ -3,44 +3,32 @@ const {DataTypes} = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Deliveries', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      role:{
+      way_of_delivery: {
         type: DataTypes.STRING,
-        defaultValue:"CLIENT"
+        allowNull:false
       },
-      first_name: {
+      address: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull:false
       },
-      last_name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      username: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      phone_number: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      number_of_purchases: {
-        type: DataTypes.INTEGER,
+      total_price: {
+        type: DataTypes.DOUBLE,
         defaultValue:0
+      },
+      article_id: {
+        type: DataTypes.INTEGER,
+        allowNull:false
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull:false
       },
       createdAt: {
         defaultValue: new Date(),
@@ -53,6 +41,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Deliveries');
   }
 };
