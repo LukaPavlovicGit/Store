@@ -11,7 +11,11 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       price: {
-        type: DataTypes.DOUBLE,
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       createdAt: {

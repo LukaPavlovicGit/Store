@@ -41,4 +41,19 @@ function articleValidation(article){
     return schema.validate(article)
 }
 
-module.exports = { userRegistrationValidation, userLoginValidation, commentValidation, articleValidation}
+function invoiceValidation(invoice){
+
+    const schema = Joi.object().keys({
+        price: Joi.number().min(0).required(),
+        user_id: Joi.number().min(1).required()
+    })
+    return schema.validate(invoice)
+}
+
+module.exports = {
+    userRegistrationValidation,
+    userLoginValidation,
+    commentValidation,
+    articleValidation,
+    invoiceValidation
+}
