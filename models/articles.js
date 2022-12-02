@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       type: DataTypes.DOUBLE,
-      allowNull: false
+      defaultValue: 0
     },
     number_on_stock: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      defaultValue: 0
     }
   }, {
     sequelize,

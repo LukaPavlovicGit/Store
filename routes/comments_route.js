@@ -1,14 +1,12 @@
 const express = require('express')
 const route = express.Router()
-const dotenv = require('dotenv');
-const jwt = require('jsonwebtoken');
-const authToken = require('./../auth_token/auth_token');
-const { sequelize, Comments, Users, Articles } = require('../models');
-const joi_validation = require('./../joi_validation/joi_validation.js');
+const authToken = require('./../auth_token/auth_token')
+const { Comments } = require('../models')
+const joi_validation = require('./../joi_validation/joi_validation.js')
 
-route.use(express.json());
-route.use(express.urlencoded({ extended: true }));
-route.use(authToken);
+route.use(express.json())
+route.use(express.urlencoded({ extended: true }))
+route.use(authToken)
 
 route.get('/comments', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
@@ -43,7 +41,7 @@ route.post('/comments', (req, res) => {
             const commentDto = {user_id: row.user_id, article_id: row.article_id, rate: row.rate, text: row.text}
             res.json({comment: commentDto})
         })
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(500).json(err))
 
 })
 
@@ -57,13 +55,14 @@ route.put('/comments/:id', (req, res) => {
             if(req.user.id !== row.user_id)
                 return res.status(401).json({message: "User can't updated row if it's not his personal!"})
 
-            row.article_id = req.body.article_id;
-            row.rate = req.body.rate;
-            row.text = req.body.text;
+            row.article_id = req.body.article_id
+            row.rate = req.body.rate
+            row.text = req.body.text
+            row.updatedAt = new Date()
 
             row.save()
                 .then(row => res.json(row))
-                .catch(err => res.status(500).json(err));
+                .catch(err => res.status(500).json(err))
         })
         .catch(err => res.status(500).json(err))
 })
@@ -73,9 +72,9 @@ route.delete('/comments/:id', (req, res) => {
         .then(row => {
             row.destroy()
                 .then(row => res.json(row))
-                .catch(err => res.status(500).json(err));
+                .catch(err => res.status(500).json(err))
         })
         .catch(err => res.status(500).json(err))
 })
 
-module.exports = route;
+module.exports = route

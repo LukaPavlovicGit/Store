@@ -32,4 +32,13 @@ function commentValidation(comment){
     return schema.validate(comment)
 }
 
-module.exports = { userRegistrationValidation, userLoginValidation, commentValidation}
+function articleValidation(article){
+
+    const schema = Joi.object().keys({
+        price: Joi.number().min(0).required(),
+        number_on_stock: Joi.number().min(0).required()
+    })
+    return schema.validate(article)
+}
+
+module.exports = { userRegistrationValidation, userLoginValidation, commentValidation, articleValidation}
