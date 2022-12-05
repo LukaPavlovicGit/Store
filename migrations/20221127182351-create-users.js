@@ -22,6 +22,10 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false
       },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       username: {
         type: DataTypes.STRING,
         allowNull: false

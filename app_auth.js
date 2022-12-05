@@ -20,16 +20,18 @@ app.post('/register', (req, res) => {
 
     const validation = joi_validation.userRegistrationValidation(req.body)
     if(validation.error){
+        console.error(validation.error)
         return res.send({ message: validation.error.details[0].message })
     }
 
     Users.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
+        address: req.body.address,
         username: req.body.username,
-        email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
-        phone_number: req.body.phone_number
+        phone_number: req.body.phone_number,
+        email: req.body.email
     })
         .then(row => {
             const userDto = { id: row.id, role: row.role, username: row.username };

@@ -21,8 +21,8 @@ route.get('/articles/:id', (req,res) => {
 })
 
 route.post('/articles', (req,res) => {
-    if(req.user.role !== 'ADMIN')
-        return res.status(401).json({message:'Unauthorized'})
+    if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
+        return res.status(401).json({message: 'Unauthorized'})
 
     const validation = joi_validation.articleValidation(req.body)
     if(validation.error)
@@ -42,8 +42,8 @@ route.post('/articles', (req,res) => {
 })
 
 route.put('/articles/:id', (req, res) => {
-    if(req.user.role !== 'ADMIN')
-        return res.status(401).json({message:'Unauthorized'})
+    if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
+        return res.status(401).json({message: 'Unauthorized'})
 
     const validation = joi_validation.articleValidation(req.body)
     if(validation.error)
@@ -65,8 +65,8 @@ route.put('/articles/:id', (req, res) => {
 })
 
 route.delete('/articles/:id', (req, res) => {
-    if(req.user.role !== 'ADMIN')
-        return res.status(401).json({message:'Unauthorized'})
+    if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
+        return res.status(401).json({message: 'Unauthorized'})
 
     Articles.findOne({ where: { id: req.params.id } })
         .then(row => {
