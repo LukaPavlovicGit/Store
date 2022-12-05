@@ -70,6 +70,9 @@ route.put('/comments/:id', (req, res) => {
 route.delete('/comments/:id', (req, res) => {
     Comments.findOne({where: { id: req.params.id } } )
         .then(row => {
+            if(req.user.id !== row.user_id && req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
+                return res.status(401).json({message: 'Unauthorized'})
+
             row.destroy()
                 .then(row => res.json(row))
                 .catch(err => res.status(500).json(err))
