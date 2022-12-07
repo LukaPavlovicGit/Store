@@ -14,8 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Questions.init({
-    questing: DataTypes.STRING,
-    answer: DataTypes.STRING
+    question: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    answer: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Questions',

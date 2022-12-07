@@ -71,6 +71,10 @@ function categoryValidation(category){
 
 }
 
+function questionValidation(question){
+
+}
+
 module.exports = {
     userRegistrationValidation,
     userLoginValidation,
@@ -78,5 +82,6 @@ module.exports = {
     articleValidation,
     invoiceValidation,
     deliveryValidation,
-    categoryValidation
+    categoryValidation,
+    questionValidation
 }
