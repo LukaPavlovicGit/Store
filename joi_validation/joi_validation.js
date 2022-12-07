@@ -67,11 +67,16 @@ function deliveryValidation(delivery){
     return schema.validate(delivery)
 }
 
+function categoryValidation(category){
+
+}
+
 module.exports = {
     userRegistrationValidation,
     userLoginValidation,
     commentValidation,
     articleValidation,
     invoiceValidation,
-    deliveryValidation
+    deliveryValidation,
+    categoryValidation
 }
