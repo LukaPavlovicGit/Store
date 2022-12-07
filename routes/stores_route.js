@@ -1,57 +1,53 @@
 const express = require('express')
 const route = express.Router()
 const authToken = require('./../auth_token/auth_token')
-const { Reclamations } = require('../models')
+const { Stores } = require('../models')
 const joi_validation = require('./../joi_validation/joi_validation.js')
 
 route.use(express.json())
 route.use(express.urlencoded({ extended: true }))
 route.use(authToken)
 
-route.get('/reclamations', (req,res) => {
-    Reclamations.findAll()
+route.get('/stores', (req,res) => {
+    Stores.findAll()
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 })
 
-route.get('/reclamations/:id', (req,res) => {
-    Reclamations.findOne({ where: { id: req.params.id } } )
+route.get('/stores/:id', (req,res) => {
+    Stores.findOne({ where: { id: req.params.id } } )
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })
 
-route.post('/reclamations', (req,res) => {
+route.post('/stores', (req,res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.reclamationValidation(req.body)
+    const validation = joi_validation.storeValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Reclamations.create({
-        description: req.body.description,
-        user_id: req.body.user_id,
-        article_id: req.body.article_id
+    Stores.create({
+        location: req.body.location
     })
         .then(row => {
-            res.json({reclamation: row})
+            res.json({store: row})
         })
         .catch(err => res.status(500).json(err));
 })
 
-route.put('/reclamations/:id', (req, res) => {
+route.put('/stores/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.reclamationValidation(req.body)
+    const validation = joi_validation.storeValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Reclamations.findOne({ where: { id: req.params.id } } )
+    Stores.findOne({ where: { id: req.params.id } } )
         .then(row => {
-            row.description = req.body.description
-            row.user_id = req.body.user_id
-            row.article_id = req.body.article_id
+            row.location = req.body.location
             row.updatedAt = new Date()
 
             row.save()
@@ -61,11 +57,11 @@ route.put('/reclamations/:id', (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-route.delete('/reclamations/:id', (req, res) => {
+route.delete('/stores/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    Reclamations.findOne({ where: { id: req.params.id } })
+    Stores.findOne({ where: { id: req.params.id } })
         .then(row => {
             row.destroy()
                 .then(row => res.json(row))
