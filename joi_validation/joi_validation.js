@@ -75,6 +75,14 @@ function questionValidation(question){
 
 }
 
+function reclamationValidation(reclamation){
+
+}
+
+function storeValidation(store){
+
+}
+
 module.exports = {
     userRegistrationValidation,
     userLoginValidation,
@@ -83,5 +91,7 @@ module.exports = {
     invoiceValidation,
     deliveryValidation,
     categoryValidation,
-    questionValidation
+    questionValidation,
+    reclamationValidation,
+    storeValidation
 }
