@@ -9,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({Comments,Invoices}) {
+    static associate({Comments,Invoices,Categories}) {
+      this.belongsTo(Categories, {foreignKey: 'category_id', as: 'category'})
       this.hasMany(Comments,{foreignKey: 'article_id', as: 'comments', onDelete: 'cascade', hooks: true })
       this.hasMany(Invoices,{foreignKey: 'article_id', as: 'invoices', onDelete: 'cascade', hooks: true })
     }
   }
   Articles.init({
-    type: {
-      type: DataTypes.STRING,
+    category_id: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     manufacturer: {
