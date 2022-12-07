@@ -83,6 +83,10 @@ function storeValidation(store){
 
 }
 
+function voucherValidation(voucher){
+
+}
+
 module.exports = {
     userRegistrationValidation,
     userLoginValidation,
@@ -93,5 +97,6 @@ module.exports = {
     categoryValidation,
     questionValidation,
     reclamationValidation,
-    storeValidation
+    storeValidation,
+    voucherValidation
 }
