@@ -6,7 +6,6 @@ const token = cookies[cookies.length - 1]
 function init() {
     getUsers()
     document.getElementById('user-create-button').addEventListener('click', addUser)
-    document.getElementById("user-cancel-button").addEventListener('click', cancelUpdate)
 }
 
 function getUsers() {
@@ -87,47 +86,38 @@ function addUser() {
 }
 
 function updateUser(userId) {
-    insertInput(userId)
-    document.getElementById('update').style.visibility = 'visible'
-    document.getElementById('user-update-button').addEventListener('click', () => {
-        var selectRole = document.getElementById('role-update')
-        var role = selectRole.options[selectRole.selectedIndex].text
+    var selectRole = document.getElementById('role-update')
+    var role = selectRole.options[selectRole.selectedIndex].text
 
-        var user = {
-            role: role,
-            first_name: document.getElementById('first-name-update').value,
-            last_name: document.getElementById('last-name-update').value,
-            address: document.getElementById('address').value,
-            username: document.getElementById('username-update').value,
-            email: document.getElementById('email-update').value,
-            password: document.getElementById('password-update').value,
-        }
-        fetch(`http://localhost:8081/admin/users/${userId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-                .then(resElement => {
-                    if (resElement.message) {
-                        alert(resElement.message)
-                    }
-                    else {
-                        location.reload();
-                        document.getElementById('password-update').value = ''
-                        document.getElementById('update').style.visibility = 'hidden'
-                    }
-                });
-
-    });
-}
-
-function cancelUpdate() {
-    document.getElementById('password-update').value = ''
-    document.getElementById('update').style.visibility = 'hidden'
+    var user = {
+        role: role,
+        first_name: document.getElementById('first-name-update').value,
+        last_name: document.getElementById('last-name-update').value,
+        address: document.getElementById('address-update').value,
+        username: document.getElementById('username-update').value,
+        email: document.getElementById('email-update').value,
+        password: document.getElementById('password-update').value,
+        phone_number: document.getElementById('phone_number-update').value
+    }
+    fetch(`http://localhost:8081/admin/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+            .then(resElement => {
+                if (resElement.message) {
+                    alert(resElement.message)
+                }
+                else {
+                    location.reload();
+                    document.getElementById('password-update').value = ''
+                    document.getElementById('update').style.visibility = 'hidden'
+                }
+            })
 }
 
 function deleteUser(userId) {
@@ -140,53 +130,32 @@ function deleteUser(userId) {
     })
         .then(res => {
             if (res.json().message) {
-                alert(res.json().message);
+                alert(res.json().message)
             }
             else {
-                let trDelete = document.getElementById(`table-row-${userId}`);
-                trDelete.parentNode.removeChild(trDelete);
+                let trDelete = document.getElementById(`table-row-${userId}`)
+                trDelete.parentNode.removeChild(trDelete)
             }
         });
 }
 
-function insertInput(userId) {
-    fetch(`http://localhost:8081/admin/users/${userId}`, {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    })
-        .then(res => res.json())
-            .then(user => {
-                if (user.message) {
-                    alert(user.message);
-                }
-                else {
-                    document.getElementById('role-update').value = user.role.toLowerCase()
-                    document.getElementById('first-name-update').value = user.first_name
-                    document.getElementById('last-name-update').value = user.last_name
-                    document.getElementById('username-update').value = user.username
-                    document.getElementById('email-update').value = user.email
-                }
-            });
-}
-
 function checkInput() {
     if (document.getElementById('first-name').value > 20) {
-        alert('First name must have min 3 and max 10 characters');
-        return false;
+        alert('First name must have min 3 and max 10 characters')
+        return false
     }
 
     if (document.getElementById('last-name').value > 20) {
-        alert('Last name must have min 3 and max 15 characters');
-        return false;
+        alert('Last name must have min 3 and max 15 characters')
+        return false
     }
 
     if (document.getElementById('username').value > 20) {
-        alert('Username must have min 3 and max 10 characters');
-        return false;
+        alert('Username must have min 3 and max 10 characters')
+        return false
     }
 
-    return true;
+    return true
 }
 
 function clearInput() {

@@ -47,9 +47,18 @@ app.get('/login', (req, res) => {
     res.sendFile('login_register.html', { root: './static' })
 })
 
-app.get('/users', authToken,(req, res) => {
+app.get('/users', authToken, (req, res) => {
     if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
         res.sendFile('users.html', { root: './static' })
+    }
+    else {
+        res.status(401).send('Not authorized')
+    }
+})
+
+app.get('/articles', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+        res.sendFile('articles.html', { root: './static' })
     }
     else {
         res.status(401).send('Not authorized')

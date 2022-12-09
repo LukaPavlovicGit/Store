@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Articles</title>
+    <link rel="stylesheet" type="text/css" href="styles/articles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="main">
+
+    <div class="create">
+        <form class="form">
+
+            <div class="form-div">
+                <label for="Category">Category_id:</label>
+                <select id="category" name="category">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="form-div">
+                <label for="manufacturer">Manufacturer:</label>
+                <input type="text" id="manufacturer" name="manufacturer" placeholder="manufacturer" required="">
+            </div>
+
+            <div class="form-div">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" placeholder="Price" required="">
+            </div>
+
+            <div class="form-div">
+                <label for="number_on_stock">Number on stock:</label>
+                <input type="text" id="number_on_stock" name="number_on_stock" placeholder="Number on stock" required="">
+            </div>
+
+            <button type="button" id="article-create-button">Create article</button>
+
+        </form>
+    </div>
+
+    <div id="update" class="update">
+        <form class="form">
+
+            <div class="form-div">
+                <label for="category-update">Category_id:</label>
+                <select id="category-update" name="role">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="form-div">
+                <label for="manufacturer-update">Manufacturer:</label>
+                <input type="text" id="manufacturer-update" name="manufacturer-update" placeholder="manufacturer-update" required="">
+            </div>
+
+            <div class="form-div">
+                <label for="price-update">Price:</label>
+                <input type="text" id="price-update" name="price-update" placeholder="price-update" required="">
+            </div>
+
+            <div class="form-div">
+                <label for="number_on_stock-update">Number on stock:</label>
+                <input type="text" id="number_on_stock-update" name="number_on_stock-update" placeholder="Number on stock" required="">
+            </div>
+
+        </form>
+    </div>
+
+    <div class="table-div">
+        <table border="3">
+            <thead>
+            <tr id="table-row-header">
+                <th>Category id</th>
+                <th>Manufacturer</th>
+                <th>Price</th>
+                <th>Number on stock</th>
+            </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="scripts/article.js"></script>
+</body>
+
+</html>

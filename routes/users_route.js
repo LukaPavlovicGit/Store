@@ -53,8 +53,10 @@ route.put('/users/:id', (req, res) => {
             row.role = req.body.role
             row.first_name = req.body.first_name
             row.last_name = req.body.last_name
+            row.address = req.body.address
             row.username = req.body.username
             row.email = req.body.email
+            row.phone_number = req.body.phone_number
             if (req.body.password)
                 row.password = bcrypt.hashSync(req.body.password, 10)
             row.updatedAt = new Date()

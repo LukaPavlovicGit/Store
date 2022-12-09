@@ -29,14 +29,13 @@ route.post('/articles', (req,res) => {
         return res.send({ message: validation.error.details[0].message })
 
     Articles.create({
-        type: req.body.type,
+        category_id: req.body.category_id,
         manufacturer: req.body.manufacturer,
         price: req.body.price,
         number_on_stock: req.body.number_on_stock
     })
         .then(row => {
-            const articleDto = {id: row.id, manufacturer: row.manufacturer, price: row.price, number_on_stock: row.number_on_stock}
-            res.json({article: articleDto})
+            res.json({article: row})
         })
         .catch(err => res.status(500).json(err));
 })
@@ -51,7 +50,7 @@ route.put('/articles/:id', (req, res) => {
 
     Articles.findOne({ where: { id: req.params.id } } )
         .then(row => {
-            row.type = req.body.type
+            row.category_id = req.body.category_id
             row.manufacturer = req.body.manufacturer
             row.price = req.body.price
             row.number_on_stock = req.body.number_on_stock
