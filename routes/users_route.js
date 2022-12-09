@@ -15,7 +15,6 @@ route.use(authToken)
 route.get('/users', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
-
     Users.findAll()
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
@@ -24,7 +23,6 @@ route.get('/users', (req, res) => {
 route.get('/users/:id', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
-
     Users.findOne({where: {id: req.params.id} })
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
@@ -33,10 +31,9 @@ route.get('/users/:id', (req, res) => {
 route.post('/users', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
-
     axios.post('http://localhost:8082/register', req.body)
         .then(ans => {
-            res.json({ token: ans.data.token })
+            res.json({ user: ans.data.user })
         })
         .catch(err => {
             res.status(500).json(err)
