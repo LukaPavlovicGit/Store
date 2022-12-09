@@ -12,7 +12,7 @@ module.exports = {
       },
       role:{
         type: DataTypes.STRING,
-        defaultValue:"CLIENT"
+        defaultValue:'CLIENT'
       },
       first_name: {
         type: DataTypes.STRING,
@@ -40,7 +40,8 @@ module.exports = {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       number_of_purchases: {
         type: DataTypes.INTEGER,

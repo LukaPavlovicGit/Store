@@ -11,7 +11,7 @@ function getCookies(req) {
     }
 
     const rawCookies = req.headers.cookie.split('; ')
-    const parsedCookies = {}
+    const parsedCookies = {};
 
     rawCookies.forEach(rawCookie => {
         const parsedCookie = rawCookie.split('=')
@@ -44,8 +44,19 @@ app.get('/', authToken, (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.sendFile('login_register.html', { root: './static' });
-});
+    res.sendFile('login_register.html', { root: './static' })
+})
+
+app.get('/users', authToken,(req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+        res.sendFile('users.html', { root: './static' })
+    }
+    else {
+        res.status(401).send('Not authorized')
+    }
+})
+
+
 
 app.use(express.static(path.join(__dirname, 'static')));
 app.listen({ port: 8080 }, async () => {
