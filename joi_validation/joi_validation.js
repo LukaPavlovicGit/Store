@@ -8,7 +8,7 @@ function userRegistrationValidation(user){
         last_name: Joi.string().max(15).required(),
         address: Joi.string().max(30).required(),
         username: Joi.string().max(20).required(),
-        email: Joi.string().trim().email().required(),
+        email: Joi.string().required(),
         password: Joi.string().max(20).required(),
         phone_number: Joi.number()
     })
@@ -18,7 +18,7 @@ function userRegistrationValidation(user){
 function userLoginValidation(user){
 
     const schema = Joi.object().keys({
-        email: Joi.string().trim().email().required(),
+        email: Joi.string().required(),
         password: Joi.string().max(20).required(),
     })
     return schema.validate(user)
