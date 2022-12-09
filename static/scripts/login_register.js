@@ -26,12 +26,10 @@ function signUp() {
         .then(res => res.json())
         .then(resUser => {
             if (resUser.message) {
-                alert(resUser.message);
+                alert(resUser.message)
             }
-            else {
-                alert('Successfully registered');
-                document.cookie = `token=${resUser.token};SameSite=Lax`;
-                window.location.href = 'index.html';
+            else if (resUser.user) {
+                alert('Successfully registered. You can Login now')
             }
         });
 }
@@ -52,11 +50,11 @@ function login() {
         .then(res => res.json())
             .then(resUser => {
                 if (resUser.message) {
-                    alert(resUser.message);
+                    alert(resUser.message)
                 }
-                else {
-                    document.cookie = `token=${resUser.token};SameSite=Lax`;
-                    window.location.href = 'index.html';
+                else if (resUser.token) {
+                    document.cookie = `token=${resUser.token};SameSite=Lax`
+                    window.location.href = 'index.html'
                 }
             });
 }

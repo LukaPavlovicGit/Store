@@ -1,10 +1,10 @@
 const express = require('express')
 const route = express.Router()
-const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config()
 
 module.exports = function (req, res, next) {
+
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
     if (token == null) {
@@ -14,7 +14,6 @@ module.exports = function (req, res, next) {
         if (err) {
             return res.status(403).json({ message: err });
         }
-
         req.user = user;
         next();
     });

@@ -42,12 +42,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     phone_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.INTEGER
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     number_of_purchases: {
       type: DataTypes.INTEGER,

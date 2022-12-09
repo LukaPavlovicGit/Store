@@ -22,11 +22,11 @@ module.exports = {
             allowNull: false
       },
       createdAt: {
-        allowNull: false,
+        defaultValue: new Date(),
         type: DataTypes.DATE
       },
       updatedAt: {
-        allowNull: false,
+        defaultValue: new Date(),
         type: DataTypes.DATE
       }
     });

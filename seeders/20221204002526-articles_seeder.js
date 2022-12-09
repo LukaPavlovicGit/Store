@@ -16,37 +16,37 @@ module.exports = {
 
     await queryInterface.bulkInsert('Articles', [
       {
-        type:"LAPTOP",
+        category_id:1,
         manufacturer:"HP",
         price:1000,
         number_on_stock: 10
       },
       {
-        type:"LAPTOP",
+        category_id:1,
         manufacturer:"DELL",
         price:1200,
         number_on_stock:7
       },
       {
-        type:"LAPTOP",
+        category_id:1,
         manufacturer:"ACER",
         price:800,
         number_on_stock:11
       },
       {
-        type:"MOBILE",
+        category_id:2,
         manufacturer:"SAMSUNG",
         price:1000,
         number_on_stock:5
       },
       {
-        type:"MOBILE",
+        category_id:2,
         manufacturer:"HUAWEI",
         price:1200,
         number_on_stock:8
       },
       {
-        type:"MOBILE",
+        category_id:2,
         manufacturer:"IPHONE",
         price:1300,
         number_on_stock:4
@@ -56,11 +56,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('Articles',null, {})
+
   }
 };

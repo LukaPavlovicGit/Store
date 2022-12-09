@@ -10,8 +10,8 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      type: {
-        type: DataTypes.STRING,
+      category_id: {
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       manufacturer: {

@@ -3,13 +3,14 @@ const Joi = require('joi')
 function userRegistrationValidation(user){
 
     const schema = Joi.object().keys({
-        first_name: Joi.string().alphanum().min(3).max(10).required(),
-        last_name: Joi.string().alphanum().min(3).max(10).required(),
-        address: Joi.string().alphanum().min(4).required(),
-        username: Joi.string().alphanum().min(4).max(10).required(),
+        role: Joi.string(),
+        first_name: Joi.string().max(15).required(),
+        last_name: Joi.string().max(15).required(),
+        address: Joi.string().max(30).required(),
+        username: Joi.string().max(20).required(),
         email: Joi.string().trim().email().required(),
-        password: Joi.string().alphanum().min(5).max(15).required(),
-        phone_number: Joi.string().alphanum().min(5).max(15)
+        password: Joi.string().max(20).required(),
+        phone_number: Joi.number()
     })
     return schema.validate(user)
 }
@@ -18,7 +19,7 @@ function userLoginValidation(user){
 
     const schema = Joi.object().keys({
         email: Joi.string().trim().email().required(),
-        password: Joi.string().alphanum().min(5).max(15).required(),
+        password: Joi.string().max(20).required(),
     })
     return schema.validate(user)
 }
@@ -38,10 +39,10 @@ function commentValidation(comment){
 function articleValidation(article){
 
     const schema = Joi.object().keys({
-        type: Joi.string().min(3).required(),
+        category_id: Joi.number().min(1).required(),
         manufacturer: Joi.string().min(3).required(),
         price: Joi.number().min(0).required(),
-        number_on_stock: Joi.number().min(0).required()
+        number_on_stock: Joi.number().min(0)
     })
     return schema.validate(article)
 }

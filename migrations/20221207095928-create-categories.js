@@ -11,14 +11,16 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
       },
       createdAt: {
-        allowNull: false,
+        defaultValue: new Date(),
         type: DataTypes.DATE
       },
       updatedAt: {
-        allowNull: false,
+        defaultValue: new Date(),
         type: DataTypes.DATE
       }
     });
