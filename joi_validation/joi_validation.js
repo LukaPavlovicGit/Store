@@ -27,11 +27,9 @@ function userLoginValidation(user){
 function commentValidation(comment){
 
     const schema = Joi.object().keys({
-        article_id: Joi.number().min(1).required(),
+        article_id: Joi.number().min(1),
         rate: Joi.number().min(1).max(10).required(),
-        text: Joi.string().min(1).required(),
-        user_id: Joi.number().min(1).required(),
-        article_id: Joi.number().min(1).required()
+        text: Joi.string().min(1).required()
     })
     return schema.validate(comment)
 }
