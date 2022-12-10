@@ -10,7 +10,10 @@ route.use(authToken)
 
 route.get('/articles', (req,res) => {
     Articles.findAll()
-        .then(rows => res.json(rows))
+        .then(rows => {
+            console.log( rows[1].getComments())
+            res.json(rows)
+        })
         .catch(err => res.status(500).json(err))
 })
 
