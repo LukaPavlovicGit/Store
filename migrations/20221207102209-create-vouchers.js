@@ -10,27 +10,17 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      first_name: {
-        type: DataTypes.STRING
-      },
-      last_name: {
-        type: DataTypes.STRING
-      },
-      address: {
-        type: DataTypes.STRING
-      },
-      email: {
-        type: DataTypes.STRING
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       value: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       comment: {
-        type: DataTypes.STRING
-      },
-      createdAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.STRING,
+        allowNull: false
       },
       updatedAt: {
         defaultValue: new Date(),

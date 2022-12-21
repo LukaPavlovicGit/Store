@@ -12,7 +12,7 @@ route.get('/deliveries', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({ message: 'Unauthorized' })
 
-    Deliveries.findAll()
+    Deliveries.findAll({ include:['orders'] })
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 
@@ -22,7 +22,7 @@ route.get('/deliveries/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({ message: 'Unauthorized' })
 
-    Deliveries.findOne({where : {id: req.params.id}})
+    Deliveries.findOne({ include:['orders'], where : {id: req.params.id} } )
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 })
@@ -33,11 +33,7 @@ route.post('/deliveries', (req, res) => {
         return res.send({ message: validation.error.details[0].message })
 
     Deliveries.create({
-        way_of_delivery: req.body.way_of_delivery,
-        address: req.user.address,
-        total_price: req.body.total_price,
-        article_id: req.body.article_id,
-        user_id: req.user.id
+        delivery_date: req.body.delivery_date
     })
         .then(row => {
             const deliveryDto = {way_of_delivery: row.way_of_delivery, address: row.address, total_price: row.total_price, article_id: row.article_id, user_id: row.user_id }
@@ -50,14 +46,10 @@ route.put('/deliveries/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({ message: 'Unauthorized' })
 
-    Deliveries.findOne({where: {id: req.params.id}})
+    Deliveries.findOne({include:['orders'], where: {id: req.params.id}})
         .then(row => {
-
-            row.way_of_delivery = req.body.way_of_delivery
-            row.address = req.body.address
-            row.total_price = req.body.total_price
-            row.article_id = req.body.article_id
-            row.user_id = req.body.user_id
+            if(req.body.delivery_date)
+                row.delivery_date = req.body.delivery_date
             row.updatedAt = new Date()
 
             row.save()

@@ -1,55 +1,57 @@
 const express = require('express')
 const route = express.Router()
 const authToken = require('./../auth_token/auth_token')
-const { Questions } = require('../models')
+const { Orders } = require('../models')
 const joi_validation = require('./../joi_validation/joi_validation.js')
 
 route.use(express.json())
 route.use(express.urlencoded({ extended: true }))
 route.use(authToken)
 
-route.get('/questions', (req,res) => {
-    Questions.findAll()
+route.get('/orders', (req,res) => {
+    Orders.findAll({ include: ['articles'] } )
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 })
 
-route.get('/questions/:id', (req,res) => {
-    Questions.findOne({ where: { id: req.params.id } } )
+route.get('/orders/:id', (req,res) => {
+    Orders.findOne({ include: ['articles'], where: { id: req.params.id } } )
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })
 
-route.post('/questions', (req,res) => {
+route.post('/orders', (req,res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.questionValidation(req.body)
+    const validation = joi_validation.articleValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Questions.create({
-        question: req.body.question,
-        answer: req.body.answer
+    Orders.create({
+        user_id: req.body.user_id,
+        total_price: req.body.total_price
     })
         .then(row => {
-            res.json({question: row})
+            res.json({article: row})
         })
         .catch(err => res.status(500).json(err));
 })
 
-route.put('/questions/:id', (req, res) => {
+route.put('/orders/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.questionValidation(req.body)
+    const validation = joi_validation.articleValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Questions.findOne({ where: { id: req.params.id } } )
+    Orders.findOne({ include: ['articles'], where: { id: req.params.id } } )
         .then(row => {
-            row.question = req.body.question
-            row.answer = req.body.answer
+            if(req.body.user_id)
+                row.user_id = req.body.user_id
+            if(req.body.total_price)
+                row.total_price = req.body.total_price
             row.updatedAt = new Date()
 
             row.save()
@@ -59,11 +61,11 @@ route.put('/questions/:id', (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
-route.delete('/questions/:id', (req, res) => {
+route.delete('/orders/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    Questions.findOne({ where: { id: req.params.id } })
+    Orders.findOne({ where: { id: req.params.id } })
         .then(row => {
             row.destroy()
                 .then(row => res.json(row))

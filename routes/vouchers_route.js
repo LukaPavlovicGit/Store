@@ -29,10 +29,7 @@ route.post('/vouchers', (req,res) => {
         return res.send({ message: validation.error.details[0].message })
 
     Vouchers.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        address: req.body.address,
-        email: req.body.email,
+        user_id: req.body.user_id,
         value: req.body.value,
         comment: req.body.comment
     })
@@ -52,12 +49,12 @@ route.put('/vouchers/:id', (req, res) => {
 
     Vouchers.findOne({ where: { id: req.params.id } } )
         .then(row => {
-            row.first_name = req.body.first_name
-            row.last_name = req.body.last_name
-            row.address = req.body.address
-            row.email = req.body.email
-            row.value = req.body.value
-            row.comment = req.body.comment
+            if(req.body.user_id)
+                row.user_id = req.body.user_id
+            if(req.body.value)
+                row.value = req.body.value
+            if(req.body.comment)
+                row.comment = req.body.comment
             row.updatedAt = new Date()
 
             row.save()

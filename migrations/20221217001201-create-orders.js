@@ -3,27 +3,32 @@ const {DataTypes} = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Nabavkes', {
+    await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      name: {
-        type: DataTypes.STRING
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      total_price: {
+        type: DataTypes.DOUBLE,
+        defaultValue:0
       },
       createdAt: {
-        defaultValue: new Date(),
+        allowNull: false,
         type: DataTypes.DATE
       },
       updatedAt: {
-        defaultValue: new Date(),
+        allowNull: false,
         type: DataTypes.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Nabavkes');
+    await queryInterface.dropTable('Orders');
   }
 };

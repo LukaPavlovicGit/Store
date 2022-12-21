@@ -49,9 +49,12 @@ route.put('/reclamations/:id', (req, res) => {
 
     Reclamations.findOne({ where: { id: req.params.id } } )
         .then(row => {
-            row.description = req.body.description
-            row.user_id = req.body.user_id
-            row.article_id = req.body.article_id
+            if(req.body.description)
+                row.description = req.body.description
+            if(req.body.user_id)
+                row.user_id = req.body.user_id
+            if(req.body.article_id)
+                row.article_id = req.body.article_id
             row.updatedAt = new Date()
 
             row.save()

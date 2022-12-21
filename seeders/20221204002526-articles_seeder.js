@@ -18,38 +18,98 @@ module.exports = {
       {
         category_id:1,
         manufacturer:"HP",
-        price:1000,
-        number_on_stock: 10
+        name:"15s-eq3011nm",
+        price:1000
+      },
+      {
+        category_id:1,
+        manufacturer:"HP",
+        name:"15s-eq3011nm",
+        price:1000
+      },
+      {
+        category_id:1,
+        manufacturer:"HP",
+        name:"15s-eq3011nm",
+        price:1000
+      },
+      {
+        category_id:1,
+        manufacturer:"HP",
+        name:"15s-eq3011nm",
+        price:1000
       },
       {
         category_id:1,
         manufacturer:"DELL",
-        price:1200,
-        number_on_stock:7
+        name:"ProBook 450",
+        price:1200
+      },
+      {
+        category_id:1,
+        manufacturer:"DELL",
+        name:"ProBook 450",
+        price:1200
+      },
+      {
+        category_id:1,
+        manufacturer:"DELL",
+        name:"ProBook 450",
+        price:1200
       },
       {
         category_id:1,
         manufacturer:"ACER",
-        price:800,
-        number_on_stock:11
+        name:"Aspire 7",
+        price:800
+      },
+      {
+        category_id:1,
+        manufacturer:"ACER",
+        name:"Aspire 7",
+        price:800
       },
       {
         category_id:2,
         manufacturer:"SAMSUNG",
-        price:1000,
-        number_on_stock:5
+        name:"S 22",
+        price:1000
+      },
+      {
+        category_id:2,
+        manufacturer:"SAMSUNG",
+        name:"S 22",
+        price:1000
+      },
+      {
+        category_id:2,
+        manufacturer:"SAMSUNG",
+        name:"S 22",
+        price:1000
       },
       {
         category_id:2,
         manufacturer:"HUAWEI",
-        price:1200,
-        number_on_stock:8
+        name:"P40",
+        price:1200
+      },
+      {
+        category_id:2,
+        manufacturer:"HUAWEI",
+        name:"P40",
+        price:1200
       },
       {
         category_id:2,
         manufacturer:"IPHONE",
-        price:1300,
-        number_on_stock:4
+        name:"iphone14",
+        price:1300
+      },
+      {
+        category_id:2,
+        manufacturer:"IPHONE",
+        name:"iphone14",
+        price:1300
       }
     ], {})
 

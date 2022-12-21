@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({Comments,Invoices,Categories}) {
       this.belongsTo(Categories, {foreignKey: 'category_id', as: 'category'})
       this.hasMany(Comments,{foreignKey: 'article_id', as: 'comments', onDelete: 'cascade', hooks: true })
-      this.hasMany(Invoices,{foreignKey: 'article_id', as: 'invoices', onDelete: 'cascade', hooks: true })
+      this.hasOne(Invoices,{foreignKey: 'article_id', as: 'invoices', onDelete: 'cascade', hooks: true })
     }
   }
   Articles.init({
@@ -24,14 +24,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    name:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     price: {
       type: DataTypes.DOUBLE,
       defaultValue: 0
     },
-    number_on_stock: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    }
   }, {
     sequelize,
     modelName: 'Articles',

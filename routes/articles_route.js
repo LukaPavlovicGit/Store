@@ -9,17 +9,18 @@ route.use(express.urlencoded({ extended: true }))
 route.use(authToken)
 
 route.get('/articles', (req,res) => {
-    Articles.findAll()
+    Articles.findAll({include: ['comments', 'invoices']})
         .then(rows => {
-            console.log( rows[1].getComments())
             res.json(rows)
         })
         .catch(err => res.status(500).json(err))
 })
 
 route.get('/articles/:id', (req,res) => {
-    Articles.findOne({ where: { id: req.params.id } } )
-        .then(row => res.json(row))
+    Articles.findOne({ include : ['comments', 'invoices'], where: { id: req.params.id } })
+        .then(row => {
+            res.json(row)
+        })
         .catch(err => res.status(500).json(err))
 })
 
@@ -34,8 +35,8 @@ route.post('/articles', (req,res) => {
     Articles.create({
         category_id: req.body.category_id,
         manufacturer: req.body.manufacturer,
-        price: req.body.price,
-        number_on_stock: req.body.number_on_stock
+        name: req.body.name,
+        price: req.body.price
     })
         .then(row => {
             res.json({article: row})
@@ -51,12 +52,16 @@ route.put('/articles/:id', (req, res) => {
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Articles.findOne({ where: { id: req.params.id } } )
+    Articles.findOne({ include : ['comments', 'invoices'], where: { id: req.params.id } } )
         .then(row => {
-            row.category_id = req.body.category_id
-            row.manufacturer = req.body.manufacturer
-            row.price = req.body.price
-            row.number_on_stock = req.body.number_on_stock
+            if(req.body.category_id)
+                row.category_id = req.body.category_id
+            if(req.body.manufacturer)
+                row.manufacturer = req.body.manufacturer
+            if(req.body.name)
+                row.name = req.body.name
+            if(req.body.price)
+                row.price = req.body.price
             row.updatedAt = new Date()
 
             row.save()
@@ -70,7 +75,7 @@ route.delete('/articles/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    Articles.findOne({ where: { id: req.params.id } })
+    Articles.findOne({ include : ['comments', 'invoices'], where: { id: req.params.id } })
         .then(row => {
             row.destroy()
                 .then(row => res.json(row))

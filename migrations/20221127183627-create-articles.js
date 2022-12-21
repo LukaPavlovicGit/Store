@@ -18,13 +18,13 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false
       },
-      price: {
-        type: DataTypes.DOUBLE,
+      name:{
+        type: DataTypes.STRING,
         allowNull: false
       },
-      number_on_stock: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      price: {
+        type: DataTypes.DOUBLE,
+        defaultValue: 0
       },
       createdAt: {
         defaultValue: new Date(),
