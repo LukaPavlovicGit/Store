@@ -14,6 +14,10 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false
       },
+      order_id: {
+        type: DataTypes.INTEGER,
+        defaultValue: -1
+      },
       manufacturer: {
         type: DataTypes.STRING,
         allowNull: false
@@ -27,12 +31,12 @@ module.exports = {
         defaultValue: 0
       },
       createdAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       }
     });
   },

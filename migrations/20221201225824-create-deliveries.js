@@ -15,12 +15,12 @@ module.exports = {
         defaultValue: new Date()
       },
       createdAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       }
     });
   },
