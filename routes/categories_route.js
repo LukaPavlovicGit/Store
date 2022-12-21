@@ -9,13 +9,13 @@ route.use(express.urlencoded({ extended: true }))
 route.use(authToken)
 
 route.get('/categories', (req,res) => {
-    Categories.findAll()
+    Categories.findAll({ include: ['articles'] } )
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 })
 
 route.get('/categories/:id', (req,res) => {
-    Categories.findOne({ where: { id: req.params.id } } )
+    Categories.findOne({ include: ['articles'], where: { id: req.params.id } } )
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })
@@ -45,9 +45,10 @@ route.put('/categories/:id', (req, res) => {
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Categories.findOne({ where: { id: req.params.id } } )
+    Categories.findOne({ include: ['articles'], where: { id: req.params.id } } )
         .then(row => {
-            row.name = req.body.name
+            if(req.body.name)
+                row.name = req.body.name
             row.updatedAt = new Date()
 
             row.save()

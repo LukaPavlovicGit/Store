@@ -11,15 +11,16 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       description: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       user_id: {
-      type: DataTypes.INTEGER,
-          allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       article_id: {
         type: DataTypes.INTEGER,
-            allowNull: false
+        allowNull: false
       },
       createdAt: {
         defaultValue: new Date(),

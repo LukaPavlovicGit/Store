@@ -10,25 +10,9 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      way_of_delivery: {
-        type: DataTypes.STRING,
-        allowNull:false
-      },
-      address: {
-        type: DataTypes.STRING,
-        allowNull:false
-      },
-      total_price: {
-        type: DataTypes.DOUBLE,
-        defaultValue:0
-      },
-      article_id: {
-        type: DataTypes.INTEGER,
-        allowNull:false
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
-        allowNull:false
+      delivery_date: {
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       },
       createdAt: {
         defaultValue: new Date(),

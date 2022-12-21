@@ -11,22 +11,34 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-    await queryInterface.bulkInsert('Stores', [
+     */
+    await queryInterface.bulkInsert('Comments', [
       {
-        location: 'Jurija Gagarina 156'
+        rate: 10,
+        text: "GREATE",
+        user_id: 1,
+        article_id: 1
       },
       {
-        location: 'Stefana Nemanje 19'
+        rate: 8,
+        text: "NICE",
+        user_id: 2,
+        article_id: 1
       },
       {
-        location: 'Kneza Mihaila 11'
+        rate: 2,
+        text: "ANYTHING SPECIAL",
+        user_id: 3,
+        article_id: 1
       },
       {
-        location: 'Pozeska 30'
+        rate: 10,
+        text: "SUPERB",
+        user_id: 3,
+        article_id: 1
       }
 
-      ], {})
+    ], {})
   },
 
   async down (queryInterface, Sequelize) {
@@ -36,6 +48,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Stores',null, {})
+    await queryInterface.bulkDelete('Comments',null, {})
   }
 };

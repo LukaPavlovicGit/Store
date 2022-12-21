@@ -52,8 +52,10 @@ route.put('/comments/:id', (req, res) => {
             if(req.user.id !== row.user_id)
                 return res.status(401).json({message: "User can't updated row if it's not his personal!"})
 
-            row.rate = req.body.rate
-            row.text = req.body.text
+            if(req.body.rate)
+                row.rate = req.body.rate
+            if(req.body.text)
+                row.text = req.body.text
             row.updatedAt = new Date()
 
             row.save()
