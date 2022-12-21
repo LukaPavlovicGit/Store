@@ -16,12 +16,12 @@ module.exports = {
         unique: true
       },
       createdAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
-        defaultValue: new Date(),
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       }
     });
   },

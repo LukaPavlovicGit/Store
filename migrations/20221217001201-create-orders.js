@@ -14,17 +14,23 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false
       },
+      delivery_id: {
+        type: DataTypes.INTEGER
+      },
+      invoice_id: {
+        type: DataTypes.INTEGER
+      },
       total_price: {
         type: DataTypes.DOUBLE,
         defaultValue:0
       },
       createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        defaultValue: new Date()
       }
     });
   },

@@ -9,15 +9,13 @@ route.use(express.urlencoded({ extended: true }))
 route.use(authToken)
 
 route.get('/articles', (req,res) => {
-    Articles.findAll({include: ['comments', 'invoices']})
-        .then(rows => {
-            res.json(rows)
-        })
+    Articles.findAll({ include: ['comments'] } )
+        .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 })
 
 route.get('/articles/:id', (req,res) => {
-    Articles.findOne({ include : ['comments', 'invoices'], where: { id: req.params.id } })
+    Articles.findOne({ include : ['comments'], where: { id: req.params.id } })
         .then(row => {
             res.json(row)
         })
@@ -52,7 +50,7 @@ route.put('/articles/:id', (req, res) => {
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Articles.findOne({ include : ['comments', 'invoices'], where: { id: req.params.id } } )
+    Articles.findOne({ include : ['comments'], where: { id: req.params.id } } )
         .then(row => {
             if(req.body.category_id)
                 row.category_id = req.body.category_id
@@ -75,7 +73,7 @@ route.delete('/articles/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    Articles.findOne({ include : ['comments', 'invoices'], where: { id: req.params.id } })
+    Articles.findOne({ include : ['comments'], where: { id: req.params.id } })
         .then(row => {
             row.destroy()
                 .then(row => res.json(row))
