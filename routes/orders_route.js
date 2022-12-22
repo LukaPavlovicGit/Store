@@ -24,7 +24,7 @@ route.post('/orders', (req,res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.articleValidation(req.body)
+    const validation = joi_validation.orderValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
@@ -42,7 +42,7 @@ route.put('/orders/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.articleValidation(req.body)
+    const validation = joi_validation.orderValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
@@ -52,6 +52,8 @@ route.put('/orders/:id', (req, res) => {
                 row.user_id = req.body.user_id
             if(req.body.total_price)
                 row.total_price = req.body.total_price
+            if(req.body.delivery_id)
+                row.delivery_id = req.body.delivery_id
             row.updatedAt = new Date()
 
             row.save()

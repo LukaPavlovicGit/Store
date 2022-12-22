@@ -23,11 +23,14 @@ route.get('/deliveries/:id', (req, res) => {
         return res.status(401).json({ message: 'Unauthorized' })
 
     Deliveries.findOne({ include:['orders'], where : {id: req.params.id} } )
-        .then(rows => res.json(rows))
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })
 
 route.post('/deliveries', (req, res) => {
+    if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
+        return res.status(401).json({ message: 'Unauthorized' })
+
     const validation = joi_validation.deliveryValidation(req.body)
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
@@ -35,10 +38,7 @@ route.post('/deliveries', (req, res) => {
     Deliveries.create({
         delivery_date: req.body.delivery_date
     })
-        .then(row => {
-            const deliveryDto = {way_of_delivery: row.way_of_delivery, address: row.address, total_price: row.total_price, article_id: row.article_id, user_id: row.user_id }
-            res.json({comment: deliveryDto})
-        })
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })
 
@@ -63,7 +63,7 @@ route.put('/deliveries/:id', (req, res) => {
 route.delete('/deliveries/:id', (req, res) => {
     Users.findOne({ where: { id: req.params.id } })
         .then(row => {
-            if(req.user.id !== row.user_id && req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
+            if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
                 return res.status(401).json({message: 'Unauthorized'})
 
             row.destroy()

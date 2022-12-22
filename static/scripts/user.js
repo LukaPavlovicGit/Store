@@ -26,10 +26,10 @@ function getUsers() {
                             <td>${user.address}</td>
                             <td>${user.username}</td>
                             <td>${user.email}</td>
-                            <td> <button type="button" class="update-button" onclick="updateUser(${user.id})">update</button> </td>
+                            <td> <button type="button" class="update-button" onclick=" updateUser(${user.id})">update</button> </td>
                             <td> <button type="button" class="delete-button" onclick="deleteUser(${user.id})">delete</button> </td>
                         </tr>`
-
+                    //"updateUser(${res.user.id})"
                     document.querySelector('#table-body').innerHTML = document.querySelector('#table-body').innerHTML + newRow
                 });
             });
@@ -39,10 +39,10 @@ function addUser() {
     if(checkInput() === false)
         return;
 
-    var selectRole = document.getElementById('role')
-    var role = selectRole.options[selectRole.selectedIndex].text
+    let selectRole = document.getElementById('role')
+    let role = selectRole.options[selectRole.selectedIndex].text
 
-    var user = {
+    let user = {
         role: role,
         first_name: document.getElementById('first-name').value,
         last_name: document.getElementById('last-name').value,
@@ -86,10 +86,10 @@ function addUser() {
 }
 
 function updateUser(userId) {
-    var selectRole = document.getElementById('role-update')
-    var role = selectRole.options[selectRole.selectedIndex].text
+    let selectRole = document.getElementById('role-update')
+    let role = selectRole.options[selectRole.selectedIndex].text
 
-    var user = {
+    let user = {
         role: role,
         first_name: document.getElementById('first-name-update').value,
         last_name: document.getElementById('last-name-update').value,
