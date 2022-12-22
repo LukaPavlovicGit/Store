@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Categories</title>
 </head>
 <body>
+    <section class="container content-section">
+        <h2 class="section-header">ALL CATEGORIES</h2>
+        <div class="category-row">
+            <span class="category-id category-header category-column">ID</span>
+            <span class="category-name category-header category-column">NAME</span>
+        </div>
+        <div class="category-rows">
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">CREATE CATEGORY</h2>
+        <div class="category-creation">
+            <input class="category-creation-name" type="text" placeholder="name">
+            <button class="category-creation-btn" type="button">CREATE</button>
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">UPDATE CATEGORY</h2>
+        <div class="category-update">
+            <input class="category-update-id" type="number" placeholder="id">
+            <input class="category-update-name" type="text" placeholder="name">
+            <button class="category-update-btn" type="button">UPDATE</button>
+        </div>
+    </section>
 
+    <script src="scripts/category.js"></script>
 </body>
 </html>

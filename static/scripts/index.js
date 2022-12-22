@@ -25,4 +25,7 @@ function init() {
     document.getElementById('comment-button').addEventListener('click', e => {
         window.location.href = '/comments'
     })
+    document.getElementById('category-button').addEventListener('click', e => {
+        window.location.href = '/categories'
+    })
 }

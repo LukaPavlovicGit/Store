@@ -17,12 +17,14 @@ const comments = require('./routes/comments_route')
 const articles = require('./routes/articles_route')
 const invoices = require('./routes/invoices_route')
 const deliveries = require('./routes/deliveries_route')
+const categories = require('./routes/categories_route')
 
 app.use('/admin', users)
 app.use('/admin', comments)
 app.use('/admin', articles)
 app.use('/admin', invoices)
 app.use('/admin', deliveries)
+app.use('/admin', categories)
 
 console.log(comments)
 

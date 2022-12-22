@@ -67,7 +67,10 @@ function deliveryValidation(delivery){
 }
 
 function categoryValidation(category){
-
+    const schema = Joi.object().keys({
+        name: Joi.string().required()
+    })
+    return schema.validate(category)
 }
 
 function questionValidation(question){
