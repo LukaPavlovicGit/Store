@@ -31,9 +31,7 @@ route.post('/categories', (req,res) => {
     Categories.create({
         name: req.body.name
     })
-        .then(row => {
-            res.json({category: row})
-        })
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err));
 })
 

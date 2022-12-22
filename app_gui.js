@@ -74,6 +74,15 @@ app.get('/comments', authToken, (req, res) => {
     }
 })
 
+app.get('/categories', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR' || req.user.role === 'CLIENT') {
+        res.sendFile('categories.html', { root: './static' })
+    }
+    else {
+        res.status(401).send('Not authorized')
+    }
+})
+
 
 
 app.use(express.static(path.join(__dirname, 'static')));
