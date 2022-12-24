@@ -15,7 +15,7 @@ route.use(authToken)
 route.get('/users', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
-    Users.findAll({ include: ['comments','invoices','orders','reclamations','vouchers'] } )
+    Users.findAll({ include: ['comments','orders','reclamations','vouchers'] } )
         .then(rows => res.json(rows))
         .catch(err => res.status(500).json(err))
 })
@@ -23,7 +23,7 @@ route.get('/users', (req, res) => {
 route.get('/users/:id', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
-    Users.findOne({ include: ['comments','invoices','orders','reclamations','vouchers'], where: {id: req.params.id} })
+    Users.findOne({ include: ['comments','orders','reclamations','vouchers'], where: {id: req.params.id} })
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })
@@ -48,7 +48,7 @@ route.put('/users/:id', (req, res) => {
     if(validation.error)
         return res.send({ message: validation.error.details[0].message })
 
-    Users.findOne({ include: ['comments','invoices','orders','reclamations','vouchers'], where: { id: req.params.id } })
+    Users.findOne({ include: ['comments','orders','reclamations','vouchers'], where: { id: req.params.id } })
         .then(row => {
             if(req.body.role)
                 row.role = req.body.role

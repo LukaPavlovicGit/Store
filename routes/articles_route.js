@@ -54,6 +54,8 @@ route.put('/articles/:id', (req, res) => {
         .then(row => {
             if(req.body.category_id)
                 row.category_id = req.body.category_id
+            if(req.body.order_id)
+                row.order_id = req.body.order_id
             if(req.body.manufacturer)
                 row.manufacturer = req.body.manufacturer
             if(req.body.name)

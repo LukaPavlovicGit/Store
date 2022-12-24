@@ -4,7 +4,7 @@ const { sequelize } = require('./models')
 const path = require('path')
 const cors = require('cors')
 
-var corsOptions = {
+let corsOptions = {
     origin: ['http://localhost:8080', 'http://localhost:8082'],
     optionsSuccessStatus: 200
 }
@@ -18,6 +18,7 @@ const articles = require('./routes/articles_route')
 const invoices = require('./routes/invoices_route')
 const deliveries = require('./routes/deliveries_route')
 const categories = require('./routes/categories_route')
+const orders = require('./routes/orders_route')
 
 app.use('/admin', users)
 app.use('/admin', comments)
@@ -25,8 +26,8 @@ app.use('/admin', articles)
 app.use('/admin', invoices)
 app.use('/admin', deliveries)
 app.use('/admin', categories)
+app.use('/admin', orders)
 
-console.log(comments)
 
 app.listen({ port: 8081 }, async () => {
 await sequelize.authenticate()

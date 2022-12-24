@@ -37,21 +37,13 @@ function commentValidation(comment){
 function articleValidation(article){
 
     const schema = Joi.object().keys({
-        category_id: Joi.number().min(1).required(),
-        manufacturer: Joi.string().min(3).required(),
-        price: Joi.number().min(0).required(),
-        number_on_stock: Joi.number().min(0)
+        category_id: Joi.number().min(1),
+        order_id: Joi.number().min(1),
+        manufacturer: Joi.string().min(3),
+        name: Joi.any(),
+        price: Joi.number().min(0)
     })
     return schema.validate(article)
-}
-
-function invoiceValidation(invoice){
-
-    const schema = Joi.object().keys({
-        price: Joi.number().min(0).required(),
-        user_id: Joi.number().min(1).required()
-    })
-    return schema.validate(invoice)
 }
 
 function deliveryValidation(delivery){
@@ -85,7 +77,6 @@ function orderValidation(order){
     const schema = Joi.object().keys({
         user_id: Joi.number().min(1),
         delivery_id: Joi.number(),
-        invoice_id: Joi.number(),
         total_price: Joi.number()
     })
     return schema.validate(order)
@@ -96,7 +87,6 @@ module.exports = {
     userLoginValidation,
     commentValidation,
     articleValidation,
-    invoiceValidation,
     deliveryValidation,
     categoryValidation,
     reclamationValidation,

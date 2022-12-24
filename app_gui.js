@@ -66,7 +66,7 @@ app.get('/articles', authToken, (req, res) => {
 })
 
 app.get('/comments', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR' || req.user.role === 'CLIENT') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
         res.sendFile('comments.html', { root: './static' })
     }
     else {
@@ -75,8 +75,17 @@ app.get('/comments', authToken, (req, res) => {
 })
 
 app.get('/categories', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR' || req.user.role === 'CLIENT') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
         res.sendFile('categories.html', { root: './static' })
+    }
+    else {
+        res.status(401).send('Not authorized')
+    }
+})
+
+app.get('/orders', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+        res.sendFile('orders.html', { root: './static' })
     }
     else {
         res.status(401).send('Not authorized')
