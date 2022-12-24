@@ -28,4 +28,7 @@ function init() {
     document.getElementById('category-button').addEventListener('click', e => {
         window.location.href = '/categories'
     })
+    document.getElementById('order-button').addEventListener('click', e => {
+        window.location.href = '/orders'
+    })
 }

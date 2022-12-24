@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({Comments,Invoices,Orders,Reclamations,Vouchers}) {
       this.hasMany(Comments, {foreignKey: 'user_id', as: 'comments', onDelete: 'cascade', hooks: true })
-      this.hasMany(Invoices, {foreignKey: 'user_id', as: 'invoices'})
       this.hasMany(Orders, {foreignKey: 'user_id', as: 'orders'})
       this.hasMany(Reclamations, {foreignKey: 'user_id', as: 'reclamations'})
       this.hasMany(Vouchers, {foreignKey: 'user_id', as: 'vouchers'})

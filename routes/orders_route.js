@@ -32,9 +32,7 @@ route.post('/orders', (req,res) => {
         user_id: req.body.user_id,
         total_price: req.body.total_price
     })
-        .then(row => {
-            res.json({article: row})
-        })
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err));
 })
 
