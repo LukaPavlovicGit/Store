@@ -33,9 +33,7 @@ route.post('/reclamations', (req,res) => {
         user_id: req.body.user_id,
         article_id: req.body.article_id
     })
-        .then(row => {
-            res.json({reclamation: row})
-        })
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err));
 })
 

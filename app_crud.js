@@ -18,6 +18,7 @@ const articles = require('./routes/articles_route')
 const deliveries = require('./routes/deliveries_route')
 const categories = require('./routes/categories_route')
 const orders = require('./routes/orders_route')
+const reclamations = require('./routes/reclamations_route')
 
 app.use('/admin', users)
 app.use('/admin', comments)
@@ -25,6 +26,7 @@ app.use('/admin', articles)
 app.use('/admin', deliveries)
 app.use('/admin', categories)
 app.use('/admin', orders)
+app.use('/admin', require)
 
 
 app.listen({ port: 8081 }, async () => {

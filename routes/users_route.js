@@ -23,7 +23,7 @@ route.get('/users', (req, res) => {
 route.get('/users/:id', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
-    Users.findOne({ include: ['comments','orders','reclamations','vouchers'], where: {id: req.params.id} })
+    Users.findOne({ include: ['comments','orders','reclamations','vouchers'], where: {id: req.params.id} } )
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 })

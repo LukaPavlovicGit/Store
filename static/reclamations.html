@@ -2,9 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Reclamations</title>
 </head>
 <body>
 
+    <section class="container content-section">
+        <h2 class="section-header">CREATE RECLAMATION</h2>
+        <div class="create-reclamation-div">
+            <label for="create-reclamation-user-id">User id:</label>
+            <input type="number" id="create-reclamation-user-id" placeholder="user id" required="">
+        </div>
+        <div class="create-reclamation-div">
+            <label for="create-reclamation-user-id">Description:</label>
+            <input type="text" id="create-reclamation-description" placeholder="description" required="">
+        </div>
+        <div class="create-reclamation-div">
+            <label for="create-reclamation-user-id">Article id:</label>
+            <input type="number" id="create-reclamation-article-id" placeholder="article id" required="">
+        </div>
+        <div>
+            <button class="btn btn-create-reclamation" type="button">CREATE</button>
+        </div>
+
+    </section>
+    <section>
+        <div>
+            <button class="btn btn-get-reclamations" type="button">GET RECLAMATIONS</button>
+        </div>
+        <div class="table-div">
+            <h3 class="table-div-header">ARTICLES</h3>
+            <table border="3">
+                <thead>
+                <tr id="reclamation-table-row-header">
+                    <th>ID</th>
+                    <th>USER ID</th>
+                    <th>DESCRIPTION</th>
+                    <th>ARTICLE ID</th>
+                </tr>
+                </thead>
+                <tbody class="reclamation-table-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="container content-section">
+        <h2 class="section-header">USER'S ARTICLES</h2>
+        <label for="articles-user-id">Articles bought by user with id:</label>
+        <input type="number" id="articles-user-id" placeholder="user id" required="">
+        <div>
+            <button class="btn btn-get-articles" type="button">GET ARTICLES</button>
+        </div>
+        <div class="table-div">
+            <h3 class="table-div-header">ARTICLES</h3>
+            <table border="3">
+                <thead>
+                <tr id="article-table-row-header">
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                </tr>
+                </thead>
+                <tbody class="article-table-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="container content-section">
+        <div class="table-div">
+            <h2 class="table-div-header">USERS</h2>
+            <table border="3">
+                <thead>
+                <tr id="user-table-row-header">
+                    <th>ID</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                </tr>
+                </thead>
+                <tbody class="user-table-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="scripts/reclamation.js"></script>
 </body>
 </html>

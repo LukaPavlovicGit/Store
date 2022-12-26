@@ -20,6 +20,12 @@ route.get('/orders/:id', (req,res) => {
         .catch(err => res.status(500).json(err))
 })
 
+route.get('/orders/by-user-id/:id', (req,res) => {
+    Orders.findAll({ include: ['articles'], where: { user_id: req.params.id } } )
+        .then(rows => res.json(rows))
+        .catch(err => res.status(500).json(err))
+})
+
 route.post('/orders', (req,res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})

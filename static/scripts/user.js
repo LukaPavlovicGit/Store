@@ -108,16 +108,16 @@ function updateUser(userId) {
         body: JSON.stringify(user)
     })
         .then(res => res.json())
-            .then(resElement => {
-                if (resElement.message) {
-                    alert(resElement.message)
-                }
-                else {
-                    location.reload();
-                    document.getElementById('password-update').value = ''
-                    document.getElementById('update').style.visibility = 'hidden'
-                }
-            })
+        .then(resElement => {
+            if (resElement.message) {
+                alert(resElement.message)
+            }
+            else {
+                location.reload();
+                document.getElementById('password-update').value = ''
+                document.getElementById('update').style.visibility = 'hidden'
+            }
+        })
 }
 
 function deleteUser(userId) {
@@ -128,10 +128,10 @@ function deleteUser(userId) {
             'Authorization': 'Bearer ' + token
         },
     })
+        .then(res => res.json())
         .then(res => {
-            if (res.json().message) {
-                alert(res.json().message)
-            }
+            if (res.message)
+                alert(res.message)
             else {
                 let trDelete = document.getElementById(`table-row-${userId}`)
                 trDelete.parentNode.removeChild(trDelete)

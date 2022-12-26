@@ -31,4 +31,7 @@ function init() {
     document.getElementById('order-button').addEventListener('click', e => {
         window.location.href = '/orders'
     })
+    document.getElementById('reclamation-button').addEventListener('click', e => {
+        window.location.href = '/reclamations'
+    })
 }

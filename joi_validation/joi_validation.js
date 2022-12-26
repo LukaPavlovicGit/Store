@@ -62,7 +62,12 @@ function categoryValidation(category){
 }
 
 function reclamationValidation(reclamation){
-
+    const schema = Joi.object().keys({
+        description: Joi.string().required(),
+        user_id: Joi.number().required(),
+        article_id: Joi.number().required()
+    })
+    return schema.validate(reclamation)
 }
 
 function storeValidation(store){

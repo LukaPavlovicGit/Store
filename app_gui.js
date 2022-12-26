@@ -92,6 +92,14 @@ app.get('/orders', authToken, (req, res) => {
     }
 })
 
+app.get('/reclamations', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+        res.sendFile('reclamations.html', { root: './static' })
+    }
+    else {
+        res.status(401).send('Not authorized')
+    }
+})
 
 
 app.use(express.static(path.join(__dirname, 'static')));
