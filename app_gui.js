@@ -101,6 +101,15 @@ app.get('/reclamations', authToken, (req, res) => {
     }
 })
 
+app.get('/stores', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+        res.sendFile('stores.html', { root: './static' })
+    }
+    else {
+        res.status(401).send('Not authorized')
+    }
+})
+
 
 app.use(express.static(path.join(__dirname, 'static')));
 app.listen({ port: 8080 }, async () => {

@@ -71,7 +71,10 @@ function reclamationValidation(reclamation){
 }
 
 function storeValidation(store){
-
+    const schema = Joi.object().keys({
+        location: Joi.string()
+    })
+    return schema.validate(store)
 }
 
 function voucherValidation(voucher){

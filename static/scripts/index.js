@@ -34,4 +34,7 @@ function init() {
     document.getElementById('reclamation-button').addEventListener('click', e => {
         window.location.href = '/reclamations'
     })
+    document.getElementById('store-button').addEventListener('click', e => {
+        window.location.href = '/stores'
+    })
 }

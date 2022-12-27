@@ -35,7 +35,6 @@ function addUserTableRow(user){
     let text2 = document.createTextNode(`${user.first_name}`);
     let text3 = document.createTextNode(`${user.last_name}`);
 
-
     td1.appendChild(text1)
     td2.appendChild(text2)
     td3.appendChild(text3)
@@ -49,14 +48,14 @@ function addUserTableRow(user){
 }
 
 function createReclamation(event){
-    let userId = parseInt(document.getElementById('create-reclamation-user-id').value)
+    let userId = document.getElementById('create-reclamation-user-id').value
     let description = document.getElementById('create-reclamation-description').value
-    let articleId = parseInt(document.getElementById('create-reclamation-article-id').value)
+    let articleId = document.getElementById('create-reclamation-article-id').value
 
     let reclamation = {
         description: description,
         user_id: userId,
-        article_d: articleId
+        article_id: articleId
     }
 
     fetch('http://localhost:8081/admin/reclamations', {
