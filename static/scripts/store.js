@@ -90,11 +90,11 @@ function updateStore(event){
 
 function addStoreRow(store){
     let row = document.createElement('div')
-    row.classList.add('category-row')
+    row.classList.add('store-row')
     let rows = document.getElementsByClassName('store-rows')[0]
     let rowContent = `
                     <span class="store-id store-column">${store.id}</span>
-                    <span class="store-location store-column">${store.name}</span>
+                    <span class="store-location store-column">${store.location}</span>
                     <button class="btn btn-danger" type="button">REMOVE</button>
                 `
     row.innerHTML = rowContent
