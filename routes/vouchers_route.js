@@ -33,9 +33,7 @@ route.post('/vouchers', (req,res) => {
         value: req.body.value,
         comment: req.body.comment
     })
-        .then(row => {
-            res.json({voucher: row})
-        })
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err));
 })
 

@@ -37,4 +37,7 @@ function init() {
     document.getElementById('store-button').addEventListener('click', e => {
         window.location.href = '/stores'
     })
+    document.getElementById('voucher-button').addEventListener('click', e => {
+        window.location.href = '/vouchers'
+    })
 }

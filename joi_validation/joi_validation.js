@@ -78,7 +78,12 @@ function storeValidation(store){
 }
 
 function voucherValidation(voucher){
-
+    const schema = Joi.object().keys({
+        user_id: Joi.number(),
+        value: Joi.number(),
+        comment: Joi.string()
+    })
+    return schema.validate(voucher)
 }
 
 function orderValidation(order){

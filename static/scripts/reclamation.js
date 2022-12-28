@@ -66,13 +66,12 @@ function createReclamation(event){
         },
         body: JSON.stringify(reclamation)
     })
-        .then(res => res.json())
-        .then(res => {
-            if (res.message)
-                alert(res.message)
-            else {
-
-            }
+        .then(reclamation => reclamation.json())
+        .then(reclamation => {
+            if (reclamation.message)
+                alert(reclamation.message)
+            else
+                addReclamationTableRow(reclamation)
         });
 }
 
@@ -153,10 +152,10 @@ function addReclamationTableRow(reclamation){
     let text1 = document.createTextNode(`${reclamation.id}`);
     let text2 = document.createTextNode(`${reclamation.user_id}`);
     let text3 = document.createTextNode(`${reclamation.description}`);
-    let text4 = document.createTextNode(`${reclamation.article_d}`);
+    let text4 = document.createTextNode(`${reclamation.article_id}`);
 
     let btn = document.createElement('button')
-    btn.innerHTML = 'REMOVE'
+    btn.innerText = 'REMOVE'
     btn.classList.add('btn-danger')
     btn.addEventListener('click', deleteReclamation)
 
