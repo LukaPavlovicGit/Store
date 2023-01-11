@@ -6,7 +6,7 @@ function init() {
 }
 
 function signUp() {
-    var user = {
+    let user = {
         first_name: document.getElementById('first-name').value,
         last_name: document.getElementById('last-name').value,
         address: document.getElementById('address').value,
@@ -25,17 +25,15 @@ function signUp() {
     })
         .then(res => res.json())
         .then(resUser => {
-            if (resUser.message) {
+            if (resUser.message)
                 alert(resUser.message)
-            }
-            else if (resUser.user) {
+            else if (resUser.user)
                 alert('Successfully registered. You can Login now')
-            }
         });
 }
 
 function login() {
-    var user = {
+    let user = {
         email: document.getElementById('email-login').value,
         password: document.getElementById('password-login').value,
     }
@@ -49,9 +47,8 @@ function login() {
     })
         .then(res => res.json())
             .then(resUser => {
-                if (resUser.message) {
+                if (resUser.message)
                     alert(resUser.message)
-                }
                 else if (resUser.token) {
                     document.cookie = `token=${resUser.token};SameSite=Lax`
                     window.location.href = 'index.html'

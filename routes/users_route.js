@@ -32,12 +32,8 @@ route.post('/users', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
     axios.post('http://localhost:8082/register', req.body)
-        .then(ans => {
-            res.json({ user: ans.data.user })
-        })
-        .catch(err => {
-            res.status(500).json(err)
-        });
+        .then(ans => res.json(ans.data.user))
+        .catch(err => res.status(500).json(err));
 })
 
 route.put('/users/:id', (req, res) => {

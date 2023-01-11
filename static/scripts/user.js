@@ -4,11 +4,12 @@ const cookies = document.cookie.split('=')
 const token = cookies[cookies.length - 1]
 
 function init() {
-    getUsers()
-    document.getElementById('user-create-button').addEventListener('click', addUser)
+    loadUsers()
+    document.getElementById('user-create-button').addEventListener('click', createUser)
+    document.getElementById('user-update-button').addEventListener('click', updateUser)
 }
 
-function getUsers() {
+function loadUsers(){
     fetch('http://localhost:8081/admin/users', {
         headers: {
             'Content-Type': 'application/json',
@@ -16,41 +17,84 @@ function getUsers() {
         }
     })
         .then(res => res.json())
-            .then(users => {
-                users.forEach(user => {
-                    let newRow =
-                        `<tr id="table-row-${user.id}">
-                            <td>${user.role}</td>
-                            <td>${user.first_name}</td>
-                            <td>${user.last_name}</td>
-                            <td>${user.address}</td>
-                            <td>${user.username}</td>
-                            <td>${user.email}</td>
-                            <td> <button type="button" class="update-button" onclick=" updateUser(${user.id})">update</button> </td>
-                            <td> <button type="button" class="delete-button" onclick="deleteUser(${user.id})">delete</button> </td>
-                        </tr>`
-                    //"updateUser(${res.user.id})"
-                    document.querySelector('#table-body').innerHTML = document.querySelector('#table-body').innerHTML + newRow
-                });
-            });
+        .then(users => {
+            document.getElementsByClassName('user-table-body')[0].innerHTML = ''
+            users.forEach(user => addUserTableRow(user))
+        })
 }
 
-function addUser() {
-    if(checkInput() === false)
-        return;
+function addUserTableRow(user){
+    let tr = document.createElement('tr')
 
+    let td1 = document.createElement('td')
+    let td2 = document.createElement('td')
+    let td3 = document.createElement('td')
+    let td4 = document.createElement('td')
+    let td5 = document.createElement('td')
+    let td6 = document.createElement('td')
+    let td7 = document.createElement('td')
+    td1.classList.add('user-id')
+    td2.classList.add('user-firstname')
+    td3.classList.add('user-lastname')
+    td4.classList.add('user-address')
+    td5.classList.add('user-username')
+    td6.classList.add('user-email')
+    td7.classList.add('user-phone-number')
+
+    let text1 = document.createTextNode(`${user.id}`);
+    let text2 = document.createTextNode(`${user.first_name}`)
+    let text3 = document.createTextNode(`${user.last_name}`)
+    let text4 = document.createTextNode(`${user.address}`);
+    let text5 = document.createTextNode(`${user.username}`)
+    let text6 = document.createTextNode(`${user.email}`)
+    let text7 = document.createTextNode(`${user.phone_number}`)
+
+    let btn = document.createElement('button')
+    btn.innerText = 'REMOVE'
+    btn.classList.add('btn-danger')
+    btn.addEventListener('click', deleteUser)
+
+    td1.appendChild(text1)
+    td2.appendChild(text2)
+    td3.appendChild(text3)
+    td4.appendChild(text4)
+    td5.appendChild(text5)
+    td6.appendChild(text6)
+    td7.appendChild(text7)
+
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    tr.appendChild(td4)
+    tr.appendChild(td5)
+    tr.appendChild(td6)
+    tr.appendChild(td7)
+    tr.appendChild(btn)
+
+    let tableBody = document.getElementsByClassName('user-table-body')[0]
+    tableBody.append(tr)
+}
+
+function createUser(){
     let selectRole = document.getElementById('role')
     let role = selectRole.options[selectRole.selectedIndex].text
+    let first_name = document.getElementById('first-name').value
+    let last_name = document.getElementById('last-name').value
+    let address = document.getElementById('address').value
+    let username = document.getElementById('username').value
+    let email = document.getElementById('email').value
+    let password = document.getElementById('password').value
+    let phone_number = document.getElementById('phone-number').value
 
     let user = {
         role: role,
-        first_name: document.getElementById('first-name').value,
-        last_name: document.getElementById('last-name').value,
-        address: document.getElementById('address').value,
-        username: document.getElementById('username').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        phone_number: document.getElementById('phone-number').value
+        first_name: first_name,
+        last_name: last_name,
+        address: address,
+        username: username,
+        email: email,
+        password: password,
+        phone_number: phone_number
     }
 
     fetch('http://localhost:8081/admin/users', {
@@ -61,45 +105,39 @@ function addUser() {
         },
         body: JSON.stringify(user)
     })
-        .then(res => res.json())
-            .then(res => {
-                if (res.message) {
-                    alert(res.message)
-                }
-                else {
-                    let newRow =
-                        `<tr id="table-row-${res.user.id}">
-                            <td>${res.user.role}</td>
-                            <td>${res.user.first_name}</td>
-                            <td>${res.user.last_name}</td>
-                            <td>${res.user.address}</td>
-                            <td>${res.user.username}</td>
-                            <td>${res.user.email}</td>
-                            <td> <button type="button" class="update-button" onclick="updateUser(${res.user.id})">update</button> </td>
-                            <td> <button type="button" class="delete-button" onclick="deleteUser(${res.user.id})">delete</button> </td>
-                        </tr>`
-
-                    document.querySelector('#table-body').innerHTML = document.querySelector('#table-body').innerHTML + newRow
-                    clearInput()
-                }
-            });
+        .then(user => user.json())
+        .then(user => {
+            if (user.message)
+                alert(user.message)
+            else
+                addUserTableRow(user)
+        });
 }
 
-function updateUser(userId) {
+function updateUser(){
+    let user_id = document.getElementById('user-id-update').value
     let selectRole = document.getElementById('role-update')
     let role = selectRole.options[selectRole.selectedIndex].text
+    let first_name = document.getElementById('first-name-update').value
+    let last_name = document.getElementById('last-name-update').value
+    let address = document.getElementById('address-update').value
+    let username = document.getElementById('username-update').value
+    let email = document.getElementById('email-update').value
+    let password = document.getElementById('password-update').value
+    let phone_number = document.getElementById('phone-number-update').value
 
     let user = {
         role: role,
-        first_name: document.getElementById('first-name-update').value,
-        last_name: document.getElementById('last-name-update').value,
-        address: document.getElementById('address-update').value,
-        username: document.getElementById('username-update').value,
-        email: document.getElementById('email-update').value,
-        password: document.getElementById('password-update').value,
-        phone_number: document.getElementById('phone_number-update').value
+        first_name: first_name,
+        last_name: last_name,
+        address: address,
+        username: username,
+        email: email,
+        password: password,
+        phone_number: phone_number
     }
-    fetch(`http://localhost:8081/admin/users/${userId}`, {
+
+    fetch(`http://localhost:8081/admin/users/${user_id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -107,21 +145,18 @@ function updateUser(userId) {
         },
         body: JSON.stringify(user)
     })
-        .then(res => res.json())
-        .then(resElement => {
-            if (resElement.message) {
-                alert(resElement.message)
-            }
-            else {
-                location.reload();
-                document.getElementById('password-update').value = ''
-                document.getElementById('update').style.visibility = 'hidden'
-            }
+        .then(user => user.json())
+        .then(user => {
+            if (user.message)
+                alert(user.message)
+            else
+                loadUsers()
         })
 }
 
-function deleteUser(userId) {
-    fetch(`http://localhost:8081/admin/users/${userId}`, {
+function deleteUser(event){
+    let user_id = event.target.parentElement.getElementsByClassName('user-id')[0].innerText
+    fetch(`http://localhost:8081/admin/users/${user_id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -132,37 +167,7 @@ function deleteUser(userId) {
         .then(res => {
             if (res.message)
                 alert(res.message)
-            else {
-                let trDelete = document.getElementById(`table-row-${userId}`)
-                trDelete.parentNode.removeChild(trDelete)
-            }
-        });
-}
-
-function checkInput() {
-    if (document.getElementById('first-name').value > 20) {
-        alert('First name must have min 3 and max 10 characters')
-        return false
-    }
-
-    if (document.getElementById('last-name').value > 20) {
-        alert('Last name must have min 3 and max 15 characters')
-        return false
-    }
-
-    if (document.getElementById('username').value > 20) {
-        alert('Username must have min 3 and max 10 characters')
-        return false
-    }
-
-    return true
-}
-
-function clearInput() {
-    document.getElementById('first-name').value = ''
-    document.getElementById('last-name').value = ''
-    document.getElementById('address').value = ''
-    document.getElementById('username').value = ''
-    document.getElementById('email').value = ''
-    document.getElementById('password').value = ''
+            else
+                loadUsers()
+        })
 }

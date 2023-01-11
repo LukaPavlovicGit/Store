@@ -25,16 +25,16 @@ function loadUsers(){
 function addUserTableRow(user){
     let tr = document.createElement('tr')
 
-    let td1 = document.createElement('td');
-    let td2 = document.createElement('td');
-    let td3 = document.createElement('td');
+    let td1 = document.createElement('td')
+    let td2 = document.createElement('td')
+    let td3 = document.createElement('td')
     td1.classList.add('user-id')
     td2.classList.add('user-firstname')
     td3.classList.add('user-lastname')
 
-    let text1 = document.createTextNode(`${user.id}`);
-    let text2 = document.createTextNode(`${user.first_name}`);
-    let text3 = document.createTextNode(`${user.last_name}`);
+    let text1 = document.createTextNode(`${user.id}`)
+    let text2 = document.createTextNode(`${user.first_name}`)
+    let text3 = document.createTextNode(`${user.last_name}`)
 
     td1.appendChild(text1)
     td2.appendChild(text2)
@@ -143,19 +143,19 @@ function deleteVoucher(event){
 function addVoucherTableRow(voucher){
     let tr = document.createElement('tr')
 
-    let td1 = document.createElement('td');
-    let td2 = document.createElement('td');
-    let td3 = document.createElement('td');
-    let td4 = document.createElement('td');
+    let td1 = document.createElement('td')
+    let td2 = document.createElement('td')
+    let td3 = document.createElement('td')
+    let td4 = document.createElement('td')
     td1.classList.add('voucher-id')
     td2.classList.add('voucher-user-id')
     td3.classList.add('voucher-value')
     td4.classList.add('voucher-comment')
 
-    let text1 = document.createTextNode(`${voucher.id}`);
-    let text2 = document.createTextNode(`${voucher.user_id}`);
-    let text3 = document.createTextNode(`${voucher.value}`);
-    let text4 = document.createTextNode(`${voucher.comment}`);
+    let text1 = document.createTextNode(`${voucher.id}`)
+    let text2 = document.createTextNode(`${voucher.user_id}`)
+    let text3 = document.createTextNode(`${voucher.value}`)
+    let text4 = document.createTextNode(`${voucher.comment}`)
 
     let btn = document.createElement('button')
     btn.innerText = 'REMOVE'
