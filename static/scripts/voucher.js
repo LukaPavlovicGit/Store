@@ -104,7 +104,6 @@ function updateVoucher(){
                 getVouchers()
 
         })
-
 }
 
 function getVouchers(){

@@ -37,7 +37,7 @@ route.post('/comments', (req, res) => {
         rate: req.body.rate,
         text: req.body.text
     })
-        .then(row => res.json({comment: row}))
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err))
 
 })
@@ -59,7 +59,7 @@ route.put('/comments/:id', (req, res) => {
             row.updatedAt = new Date()
 
             row.save()
-                .then(row => res.json({comment: row}))
+                .then(row => res.json(row))
                 .catch(err => res.status(500).json(err))
         })
         .catch(err => res.status(500).json(err))

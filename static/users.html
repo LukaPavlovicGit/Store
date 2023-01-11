@@ -1,119 +1,108 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Users</title>
-        <link rel="stylesheet" type="text/css" href="styles/users.css">
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
 
     <body>
-        <div class="main">
 
-            <div class="create">
-                <form class="form">
+        <section class="container content-section">
+            <h2 class="section-header">CREATE USER</h2>
+                <div class="create-user-div">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        <option value="admin">ADMIN</option>
+                        <option value="moderator">MODERATOR</option>
+                        <option value="moderator">USER</option>
+                    </select>
+                </div>
+                <div class="create-user-div">
+                    <label for="first-name">First name:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="First name" required="">
+                </div>
+                <div class="create-user-div">
+                    <label for="last-name">Last name:</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="Last name" required="">
+                </div>
+                <div class="create-user-div">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Address" required="">
+                </div>
+                <div class="create-user-div">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Username" required="">
+                </div>
+                <div class="create-user-div">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required="">
+                </div>
 
-                    <div class="form-div">
-                        <label for="role">Role:</label>
-                        <select id="role" name="role">
-                            <option value="admin">ADMIN</option>
-                            <option value="moderator">MODERATOR</option>
-                        </select>
-                    </div>
+                <div class="create-user-div">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required="">
+                </div>
 
-                    <div class="form-div">
-                        <label for="first-name">First name:</label>
-                        <input type="text" id="first-name" name="first-name" placeholder="First name" required="">
-                    </div>
+                <div class="create-user-div">
+                    <label for="phone-number">Phone number:</label>
+                    <input type="phone-number" id="phone-number" name="phone-number" placeholder="Phone number" required="">
+                </div>
 
-                    <div class="form-div">
-                        <label for="last-name">Last name:</label>
-                        <input type="text" id="last-name" name="last-name" placeholder="Last name" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" placeholder="Address" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" placeholder="Username" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Email" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" placeholder="Password" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="phone-number">Phone number:</label>
-                        <input type="phone-number" id="phone-number" name="phone-number" placeholder="Phone number" required="">
-                    </div>
-
+                <div>
                     <button type="button" id="user-create-button">Create user</button>
-
-                </form>
+                </div>
+        </section>
+        <section>
+            <h2 class="section-header">UPDATE USER</h2>
+            <div class="update-user-div">
+                <label for="role-update">Role:</label>
+                <select id="role-update" name="role-update">
+                    <option value="admin">ADMIN</option>
+                    <option value="moderator">MODERATOR</option>
+                </select>
             </div>
-
-            <div id="update" class="update">
-                <form class="form">
-            
-                    <div class="form-div">
-                        <label for="role-update">Role:</label>
-                        <select id="role-update" name="role-update">
-                            <option value="admin">ADMIN</option>
-                            <option value="moderator">MODERATOR</option>
-                        </select>
-                    </div>
-
-                    <div class="form-div">
-                        <label for="first-name-update">First name:</label>
-                        <input type="text" id="first-name-update" name="first-name-update" placeholder="First name" required="">
-                    </div>
-            
-                    <div class="form-div">
-                        <label for="last-name-update">Last name:</label>
-                        <input type="text" id="last-name-update" name="last-name-update" placeholder="Last name" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="address-update">Address:</label>
-                        <input type="text" id="address-update" name="address-update" placeholder="Address update" required="">
-                    </div>
-            
-                    <div class="form-div">
-                        <label for="username-update">Username:</label>
-                        <input type="text" id="username-update" name="username-update" placeholder="Username" required="">
-                    </div>
-            
-                    <div class="form-div">
-                        <label for="email-update">Email:</label>
-                        <input type="email" id="email-update" name="email-update" placeholder="Email" required="">
-                    </div>
-            
-                    <div class="form-div">
-                        <label for="password-update">Password:</label>
-                        <input type="password" id="password-update" name="password-update" placeholder="Password" required="">
-                    </div>
-
-                    <div class="form-div">
-                        <label for="phone_number-update">Phone:</label>
-                        <input type="number" id="phone_number-update" name="phone_number-update" placeholder="phone_number-update" required="">
-                    </div>
-            
-                </form>
+            <div class="update-user-div">
+                <label for="first-name-update">First name:</label>
+                <input type="text" id="first-name-update" name="first-name-update" placeholder="First name" required="">
             </div>
-
+            <div class="update-user-div">
+                <label for="last-name-update">Last name:</label>
+                <input type="text" id="last-name-update" name="last-name-update" placeholder="Last name" required="">
+            </div>
+            <div class="update-user-div">
+                <label for="address-update">Address:</label>
+                <input type="text" id="address-update" name="address-update" placeholder="Address update" required="">
+            </div>
+            <div class="update-user-div">
+                <label for="username-update">Username:</label>
+                <input type="text" id="username-update" name="username-update" placeholder="Username" required="">
+            </div>
+            <div class="update-user-div">
+                <label for="email-update">Email:</label>
+                <input type="email" id="email-update" name="email-update" placeholder="Email" required="">
+            </div>
+            <div class="update-user-div">
+                <label for="password-update">Password:</label>
+                <input type="password" id="password-update" name="password-update" placeholder="Password" required="">
+            </div>
+            <div class="update-user-div">
+                <label for="phone_number-update">Phone:</label>
+                <input type="number" id="phone_number-update" name="phone_number-update" placeholder="phone_number-update" required="">
+            </div>
+            <div>
+                <button class="btn btn-update-user" type="button">UPDATE</button>
+            </div>
+        </section>
+        <section>
+            <h2 class="section-header">ALL USERS</h2>
+            <div>
+                <button class="btn btn-get-users" type="button">GET USERS</button>
+            </div>
             <div class="table-div">
                <table border="3">
                    <thead>
-                       <tr id="table-row-header">
+                       <tr id="user-table-row-header">
                            <th>Role</th>
                            <th>First name</th>
                            <th>Last name</th>
@@ -122,12 +111,134 @@
                            <th>Email</th>
                        </tr>
                    </thead>
-                   <tbody id="table-body"></tbody>
+                   <tbody id="user-table-body"></tbody>
                </table>
            </div>
-       </div>
+        </section>
 
-       <script src="scripts/user.js"></script>
-   </body>
-
+        <script src="scripts/user.js"></script>
+    </body>
 </html>
+<!--    <body>-->
+<!--        <div class="main">-->
+
+<!--            <div class="create">-->
+<!--                <form class="form">-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="role">Role:</label>-->
+<!--                        <select id="role" name="role">-->
+<!--                            <option value="admin">ADMIN</option>-->
+<!--                            <option value="moderator">MODERATOR</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="first-name">First name:</label>-->
+<!--                        <input type="text" id="first-name" name="first-name" placeholder="First name" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="last-name">Last name:</label>-->
+<!--                        <input type="text" id="last-name" name="last-name" placeholder="Last name" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="address">Address:</label>-->
+<!--                        <input type="text" id="address" name="address" placeholder="Address" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="username">Username:</label>-->
+<!--                        <input type="text" id="username" name="username" placeholder="Username" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="email">Email:</label>-->
+<!--                        <input type="email" id="email" name="email" placeholder="Email" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="password">Password:</label>-->
+<!--                        <input type="password" id="password" name="password" placeholder="Password" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="phone-number">Phone number:</label>-->
+<!--                        <input type="phone-number" id="phone-number" name="phone-number" placeholder="Phone number" required="">-->
+<!--                    </div>-->
+
+<!--                    <button type="button" id="user-create-button">Create user</button>-->
+
+<!--                </form>-->
+<!--            </div>-->
+
+<!--            <div id="update" class="update">-->
+<!--                <form class="form">-->
+<!--            -->
+<!--                    <div class="form-div">-->
+<!--                        <label for="role-update">Role:</label>-->
+<!--                        <select id="role-update" name="role-update">-->
+<!--                            <option value="admin">ADMIN</option>-->
+<!--                            <option value="moderator">MODERATOR</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="first-name-update">First name:</label>-->
+<!--                        <input type="text" id="first-name-update" name="first-name-update" placeholder="First name" required="">-->
+<!--                    </div>-->
+<!--            -->
+<!--                    <div class="form-div">-->
+<!--                        <label for="last-name-update">Last name:</label>-->
+<!--                        <input type="text" id="last-name-update" name="last-name-update" placeholder="Last name" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="address-update">Address:</label>-->
+<!--                        <input type="text" id="address-update" name="address-update" placeholder="Address update" required="">-->
+<!--                    </div>-->
+<!--            -->
+<!--                    <div class="form-div">-->
+<!--                        <label for="username-update">Username:</label>-->
+<!--                        <input type="text" id="username-update" name="username-update" placeholder="Username" required="">-->
+<!--                    </div>-->
+<!--            -->
+<!--                    <div class="form-div">-->
+<!--                        <label for="email-update">Email:</label>-->
+<!--                        <input type="email" id="email-update" name="email-update" placeholder="Email" required="">-->
+<!--                    </div>-->
+<!--            -->
+<!--                    <div class="form-div">-->
+<!--                        <label for="password-update">Password:</label>-->
+<!--                        <input type="password" id="password-update" name="password-update" placeholder="Password" required="">-->
+<!--                    </div>-->
+
+<!--                    <div class="form-div">-->
+<!--                        <label for="phone_number-update">Phone:</label>-->
+<!--                        <input type="number" id="phone_number-update" name="phone_number-update" placeholder="phone_number-update" required="">-->
+<!--                    </div>-->
+<!--            -->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--            <div class="table-div">-->
+<!--               <table border="3">-->
+<!--                   <thead>-->
+<!--                       <tr id="table-row-header">-->
+<!--                           <th>Role</th>-->
+<!--                           <th>First name</th>-->
+<!--                           <th>Last name</th>-->
+<!--                           <th>Address</th>-->
+<!--                           <th>Username</th>-->
+<!--                           <th>Email</th>-->
+<!--                       </tr>-->
+<!--                   </thead>-->
+<!--                   <tbody id="table-body"></tbody>-->
+<!--               </table>-->
+<!--           </div>-->
+<!--       </div>-->
+
+<!--       <script src="scripts/user.js"></script>-->
+<!--   </body>-->
+
