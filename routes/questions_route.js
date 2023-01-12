@@ -43,7 +43,7 @@ route.put('/questions/:id', (req, res) => {
     Questions.findOne({ where: { id: req.params.id } } )
         .then(row => {
             if(req.body.question)
-                row.question = req.body.location
+                row.question = req.body.question
             if(req.body.answer)
                 row.answer = req.body.answer
             row.updatedAt = new Date()

@@ -4,55 +4,58 @@
     <meta charset="UTF-8">
     <title>Deliveries</title>
 </head>
-<body>
-    <section class="container content-section">
-        <h2 class="section-header">ALL DELIVERIES</h2>
-        <div class="delivery-row">
-            <span class="delivery-id delivery-header delivery-column">ID</span>
-            <span class="delivery-date delivery-header delivery-column">DATE</span>
-        </div>
-        <div class="delivery-rows">
-        </div>
-    </section>
-    <section class="container content-section">
-        <h2 class="section-header">CREATE DELIVERY</h2>
-        <div class="delivery-creation">
-            <input class="delivery-creation-date" type="date" placeholder="date of delivery">
-            <button class="delivery-creation-btn" type="button">CREATE</button>
-        </div>
-    </section>
-    <section class="container content-section">
-        <h2 class="section-header">UPDATE DELIVERY</h2>
-        <div class="delivery-update">
-            <input class="delivery-update-id" type="number" placeholder="id">
-            <input class="delivery-update-date" type="date" placeholder="name">
-            <button class="delivery-update-btn" type="button">UPDATE</button>
-        </div>
-    </section>
-
-
-    <section class="container content-section">
-        <h2 class="section-header">DELIVERY SETUP</h2>
-        <section>
-            <h3 class="section-header">LIST OF ORDERS</h3>
-            <div class="order-row">
-                <span class="order-id order-header order-column">ID</span>
-                <span class="order-total-price order-header order-column">TOTAL PRICE</span>
+    <body>
+        <section class="container content-section">
+            <h2 class="section-header">ALL DELIVERIES</h2>
+            <div class="delivery-row">
+                <span class="delivery-id delivery-header delivery-column">ID</span>
+                <span class="delivery-date delivery-header delivery-column">DATE</span>
             </div>
-            <div class="order-rows">
+            <div class="delivery-rows">
             </div>
         </section>
-        <section>
-            <h3 class="section-header">ORDERS ADDED TO DELIVERY</h3>
-            <div class="added-order-row">
-                <span class="added-order-delivery-id order-header added-order-column">DELIVERY ID</span>
-                <span class="added-order-order-id order-header added-order-column">ORDER ID</span>
-                <span class="added-order-order-total-price order-header added-order-column">TOTAL PRICE</span>
+        <section class="container content-section">
+            <h2 class="section-header">CREATE DELIVERY</h2>
+            <div class="delivery-creation">
+                <input class="delivery-creation-date" type="date" placeholder="date of delivery">
+                <button class="delivery-creation-btn" type="button">CREATE</button>
             </div>
-            <div class="added-order-rows">
+        </section>
+        <section class="container content-section">
+            <h2 class="section-header">UPDATE DELIVERY</h2>
+            <div class="delivery-update">
+                <input class="delivery-update-id" type="number" placeholder="id">
+                <input class="delivery-update-date" type="date" placeholder="name">
+                <button class="delivery-update-btn" type="button">UPDATE</button>
             </div>
         </section>
 
-    </section>
-</body>
+
+        <section class="container content-section">
+            <h2 class="section-header">DELIVERY SETUP</h2>
+            <section>
+                <h3 class="section-header">LIST OF ORDERS</h3>
+                <div class="order-row">
+                    <span class="order-id order-header order-column">ID</span>
+                    <span class="order-total-price order-header order-column">TOTAL PRICE</span>
+                </div>
+                <div class="order-rows">
+                </div>
+            </section>
+            <section>
+                <h3 class="section-header">ORDERS ADDED TO DELIVERY</h3>
+                <div class="added-order-row">
+                    <span class="added-order-delivery-id order-header added-order-column">DELIVERY ID</span>
+                    <span class="added-order-order-id order-header added-order-column">ORDER ID</span>
+                    <span class="added-order-order-total-price order-header added-order-column">TOTAL PRICE</span>
+                </div>
+                <div class="added-order-rows">
+                </div>
+            </section>
+
+        </section>
+
+
+        <script src="scripts/delivery.js"></script>
+    </body>
 </html>

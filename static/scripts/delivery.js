@@ -23,15 +23,18 @@ function loadDeliveries(){
         }
     })
         .then(deliveries => deliveries.json())
-        .then(deliveries => deliveries.forEach(delivery => addDeliveryRow(delivery)))
+        .then(deliveries => {
+            document.getElementsByClassName('delivery-rows')[0].innerHTML=''
+            deliveries.forEach(delivery => addDeliveryRow(delivery))
+        })
 }
 
 function createDelivery(event) {
     let clickedButton = event.target
-    let deliveryDate = clickedButton.parentElement.getElementsByClassName('delivery-creation-date')[0].innerText
+    let delivery_date = clickedButton.parentElement.getElementsByClassName('delivery-creation-date')[0].value
 
     let delivery = {
-        delivery_date: deliveryDate
+        delivery_date: delivery_date
     }
 
     fetch('http://localhost:8081/admin/deliveries', {
@@ -72,25 +75,15 @@ function updateDelivery(event) {
         .then(delivery => {
             if (delivery.message)
                 alert(delivery.message)
-            else{
-                let deliveryRowsContainer = document.getElementsByClassName('delivery-rows')[0]
-                let deliveryRows = deliveryRowsContainer.getElementsByClassName('delivery-row')
-                for(let i = 0 ; i < deliveryRows.length ; i++) {
-
-                    let deliveryRow = deliveryRows[i]
-                    let delID = deliveryRow.getElementsByClassName('delivery-id')[0].innerText
-                    if (deliveryId === delID) {
-                        deliveryRow.getElementsByClassName('category-name')[0].innerText = deliveryNewDate
-                        return
-                    }
-                }
-            }
+            else
+                loadDeliveries()
         })
 }
 
 function deleteDelivery(event) {
+
     const buttonClicked = event.target
-    const deliveryId = buttonClicked.parentElement.getElementsByClassName('category-id')[0].innerText
+    const deliveryId = buttonClicked.parentElement.getElementsByClassName('delivery-id')[0].innerText
 
     fetch(`http://localhost:8081/admin/deliveries/${deliveryId}`, {
         method: 'DELETE',
@@ -117,14 +110,15 @@ function addDeliveryRow(delivery){
                     <button class="btn btn-organize-delivery" type="button">ORGANIZE</button>
                     <button class="btn btn-danger" type="button">REMOVE</button>
                 `
-    let deliveryRows = document.getElementsByClassName('delivery-rows')[0]
     deliveryRow.innerHTML = deliveryRowContent
+    let deliveryRows = document.getElementsByClassName('delivery-rows')[0]
     deliveryRows.append(deliveryRow)
     deliveryRow.getElementsByClassName('btn btn-organize-delivery')[0].addEventListener('click', deliveryOrganization)
     deliveryRow.getElementsByClassName('btn-danger')[0].addEventListener('click', deleteDelivery)
 }
 
 function deliveryOrganization(event){
+    alert('DAAAAAAaa')
     let clickedButton = event.target
     let deliveryId = clickedButton.parentElement.getElementsByClassName('delivery-id')[0].innerText
     loadOrders(deliveryId)
@@ -139,7 +133,10 @@ function loadOrders(deliveryId){
         }
     })
         .then(orders => orders.json())
-        .then(orders => orders.forEach(order => addOrderRow(order, deliveryId)))
+        .then(orders => {
+            document.getElementsByClassName('order-rows')[0].innerHTML=''
+            orders.forEach(order => addOrderRow(order, deliveryId))
+        })
 }
 
 function addOrderRow(order, deliveryId){
@@ -203,6 +200,7 @@ function addOrderToDeliveryContent(event, orderId, deliveryId) {
                 alert(order.message)
             else {
                 clickedButton.parentElement.remove()
+                document.getElementsByClassName('added-order-rows')[0].innerHTML=''
 
                 let addedOrderRow = document.createElement('div')
                 addedOrderRow.classList.add('added-order-row')
