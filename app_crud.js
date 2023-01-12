@@ -8,8 +8,8 @@ let corsOptions = {
     optionsSuccessStatus: 200
 }
 
-app.use(cors(corsOptions));
-app.use(express.json());
+app.use(cors(corsOptions))
+app.use(express.json())
 
 const users = require('./routes/users_route')
 const comments = require('./routes/comments_route')
@@ -33,8 +33,7 @@ app.use('/admin', stores)
 app.use('/admin', vouchers)
 app.use('/admin', questions)
 
-
 app.listen({ port: 8081 }, async () => {
 await sequelize.authenticate()
-console.log('Crud server started!')
-});
+    console.log('Crud server started!')
+})

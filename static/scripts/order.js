@@ -132,7 +132,6 @@ function addToCartClicked(event){
 }
 
 function removeFromChart(event){
-
     event.target.parentElement.remove()
 
     let articleId = event.target.parentElement.getElementsByClassName('cart-article-id')[0].innerText

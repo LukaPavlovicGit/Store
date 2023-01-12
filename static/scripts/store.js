@@ -11,7 +11,6 @@ function init() {
 
     let updateStoreButton = document.getElementsByClassName('store-update-btn')[0]
     updateStoreButton.addEventListener('click', updateStore)
-
 }
 
 function loadStores(){
@@ -48,7 +47,6 @@ function createStore(event){
             else
                 addCategoryRow(store)
         })
-
 }
 
 function updateStore(event){

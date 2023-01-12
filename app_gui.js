@@ -6,12 +6,11 @@ require('dotenv').config()
 const app = express()
 
 function getCookies(req) {
-    if (req.headers.cookie == null) {
+    if (req.headers.cookie == null)
         return {}
-    }
 
     const rawCookies = req.headers.cookie.split('; ')
-    const parsedCookies = {};
+    const parsedCookies = {}
 
     rawCookies.forEach(rawCookie => {
         const parsedCookie = rawCookie.split('=')
@@ -19,21 +18,18 @@ function getCookies(req) {
     })
 
     return parsedCookies
-};
+}
 
 function authToken(req, res, next) {
     const cookies = getCookies(req)
     const token = cookies['token']
 
-    if (token == null) {
+    if (token == null)
         return res.redirect(301, '/login')
-    }
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) {
+        if (err)
             return res.redirect(301, '/login')
-        }
-
         req.user = user
         next()
     })
@@ -121,4 +117,4 @@ app.get('/questions', authToken, (req, res) => {
 app.use(express.static(path.join(__dirname, 'static')));
 app.listen({ port: 8080 }, async () => {
     console.log('GUI server started!')
-});
+})

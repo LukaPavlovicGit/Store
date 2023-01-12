@@ -1,8 +1,8 @@
-window.addEventListener('load', init);
+window.addEventListener('load', init)
 
 function init() {
-    document.getElementById('signup-button').addEventListener('click', signUp);
-    document.getElementById("login-button").addEventListener('click', login);
+    document.getElementById('signup-button').addEventListener('click', signUp)
+    document.getElementById("login-button").addEventListener('click', login)
 }
 
 function signUp() {
@@ -29,7 +29,7 @@ function signUp() {
                 alert(resUser.message)
             else if (resUser.user)
                 alert('Successfully registered. You can Login now')
-        });
+        })
 }
 
 function login() {
@@ -53,5 +53,5 @@ function login() {
                     document.cookie = `token=${resUser.token};SameSite=Lax`
                     window.location.href = 'index.html'
                 }
-            });
+            })
 }

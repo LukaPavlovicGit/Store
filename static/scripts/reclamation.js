@@ -72,7 +72,7 @@ function createReclamation(event){
                 alert(reclamation.message)
             else
                 addReclamationTableRow(reclamation)
-        });
+        })
 }
 
 function getArticles(){
@@ -87,7 +87,6 @@ function getArticles(){
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
         },
-
     })
         .then(orders => orders.json())
         .then(orders => {
@@ -128,7 +127,6 @@ function getReclamations(){
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
         },
-
     })
         .then(reclamations => reclamations.json())
         .then(reclamations => {

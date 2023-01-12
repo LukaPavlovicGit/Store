@@ -78,7 +78,7 @@ function createQuestion(){
                 alert(question.message)
             else
                 addQuestionRow(question)
-        });
+        })
 }
 
 function updateQuestion(){
@@ -123,5 +123,5 @@ function deleteQuestion(event){
                 alert(res.message)
             else
                 loadQuestions()
-        });
+        })
 }

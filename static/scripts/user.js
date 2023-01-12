@@ -111,7 +111,7 @@ function createUser(){
                 alert(user.message)
             else
                 addUserTableRow(user)
-        });
+        })
 }
 
 function updateUser(){

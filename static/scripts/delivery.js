@@ -12,7 +12,6 @@ function init() {
 
     let updateDeliveryButton = document.getElementsByClassName('delivery-update-btn')[0]
     updateDeliveryButton.addEventListener('click', updateDelivery)
-
 }
 
 function loadDeliveries(){
@@ -221,7 +220,6 @@ function addOrderToDeliveryContent(event, orderId, deliveryId) {
         })
 }
 
-
 function removeOrderFromDelivery(event) {
     const buttonClicked = event.target
     const orderId = buttonClicked.parentElement.getElementsByClassName('added-order-order-id')[0].innerText
@@ -245,5 +243,4 @@ function removeOrderFromDelivery(event) {
             else
                 buttonClicked.parentElement.remove()
         })
-
 }

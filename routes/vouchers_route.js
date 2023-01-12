@@ -34,7 +34,7 @@ route.post('/vouchers', (req,res) => {
         comment: req.body.comment
     })
         .then(row => res.json(row))
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(500).json(err))
 })
 
 route.put('/vouchers/:id', (req, res) => {

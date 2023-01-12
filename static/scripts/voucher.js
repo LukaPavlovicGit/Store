@@ -102,7 +102,6 @@ function updateVoucher(){
                 alert(voucher.message)
             else
                 loadVouchers()
-
         })
 }
 
@@ -112,7 +111,6 @@ function loadVouchers(){
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
         },
-
     })
         .then(vouchers => vouchers.json())
         .then(vouchers => {
@@ -137,7 +135,7 @@ function deleteVoucher(event){
                 alert(res.message)
             else
                 loadVouchers()
-        });
+        })
 }
 
 function addVoucherTableRow(voucher){

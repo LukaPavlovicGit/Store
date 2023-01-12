@@ -29,7 +29,7 @@ route.post('/questions', (req,res) => {
         return res.send({ message: validation.error.details[0].message })
 
     Questions.create({
-        question: req.body.location,
+        question: req.body.question,
         answer: req.body.answer
     })
         .then(row => res.json(row))
@@ -46,7 +46,7 @@ route.put('/questions/:id', (req, res) => {
 
     Questions.findOne({ where: { id: req.params.id } } )
         .then(row => {
-            if(req.body.location)
+            if(req.body.question)
                 row.question = req.body.location
             if(req.body.answer)
                 row.answer = req.body.answer

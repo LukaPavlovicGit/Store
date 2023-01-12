@@ -11,7 +11,6 @@ function init() {
 
     let updateCategoryButton = document.getElementsByClassName('category-update-btn')[0]
     updateCategoryButton.addEventListener('click', updateCategory)
-
 }
 
 function loadCategories(){
@@ -119,6 +118,5 @@ function updateCategory(event){
                 }
             }
         })
-
 }
 

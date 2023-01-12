@@ -143,7 +143,6 @@ function createComment(event){
             else
                 commentsByArticle(article_id)
         })
-
 }
 
 function commentsByArticle(article_id){
@@ -158,7 +157,6 @@ function commentsByArticle(article_id){
             document.getElementsByClassName('article-comment-table-body')[0].innerHTML = ''
             commentsByArticle.forEach(comment => addArticleCommentRow(comment))
         })
-
 }
 
 function addArticleCommentRow(comment){
@@ -228,7 +226,7 @@ function deleteComment(event){
             else
                 loadComments()
 
-        });
+        })
 }
 
 function updateComment(event){
