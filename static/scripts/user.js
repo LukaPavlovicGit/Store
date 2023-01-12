@@ -5,8 +5,8 @@ const token = cookies[cookies.length - 1]
 
 function init() {
     loadUsers()
-    document.getElementById('user-create-button').addEventListener('click', createUser)
-    document.getElementById('user-update-button').addEventListener('click', updateUser)
+    document.getElementsByClassName('user-create-button')[0].addEventListener('click', createUser)
+    document.getElementsByClassName('user-update-button')[0].addEventListener('click', updateUser)
 }
 
 function loadUsers(){
@@ -18,7 +18,7 @@ function loadUsers(){
     })
         .then(res => res.json())
         .then(users => {
-            document.getElementsByClassName('user-table-body')[0].innerHTML = ''
+            document.getElementsByClassName('user-table-body')[0].innerHTML=''
             users.forEach(user => addUserTableRow(user))
         })
 }
@@ -26,49 +26,49 @@ function loadUsers(){
 function addUserTableRow(user){
     let tr = document.createElement('tr')
 
+    let td0 = document.createElement('td')
     let td1 = document.createElement('td')
     let td2 = document.createElement('td')
     let td3 = document.createElement('td')
     let td4 = document.createElement('td')
     let td5 = document.createElement('td')
     let td6 = document.createElement('td')
-    let td7 = document.createElement('td')
-    td1.classList.add('user-id')
+    td0.classList.add('user-id')
+    td1.classList.add('user-role')
     td2.classList.add('user-firstname')
     td3.classList.add('user-lastname')
     td4.classList.add('user-address')
     td5.classList.add('user-username')
     td6.classList.add('user-email')
-    td7.classList.add('user-phone-number')
 
-    let text1 = document.createTextNode(`${user.id}`);
+    let text0 = document.createTextNode(`${user.id}`)
+    let text1 = document.createTextNode(`${user.role}`)
     let text2 = document.createTextNode(`${user.first_name}`)
     let text3 = document.createTextNode(`${user.last_name}`)
-    let text4 = document.createTextNode(`${user.address}`);
+    let text4 = document.createTextNode(`${user.address}`)
     let text5 = document.createTextNode(`${user.username}`)
     let text6 = document.createTextNode(`${user.email}`)
-    let text7 = document.createTextNode(`${user.phone_number}`)
 
     let btn = document.createElement('button')
     btn.innerText = 'REMOVE'
     btn.classList.add('btn-danger')
     btn.addEventListener('click', deleteUser)
 
+    td0.appendChild(text0)
     td1.appendChild(text1)
     td2.appendChild(text2)
     td3.appendChild(text3)
     td4.appendChild(text4)
     td5.appendChild(text5)
     td6.appendChild(text6)
-    td7.appendChild(text7)
 
+    tr.appendChild(td0)
     tr.appendChild(td1)
     tr.appendChild(td2)
     tr.appendChild(td3)
     tr.appendChild(td4)
     tr.appendChild(td5)
     tr.appendChild(td6)
-    tr.appendChild(td7)
     tr.appendChild(btn)
 
     let tableBody = document.getElementsByClassName('user-table-body')[0]

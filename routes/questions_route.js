@@ -40,10 +40,6 @@ route.put('/questions/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.questionValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
-
     Questions.findOne({ where: { id: req.params.id } } )
         .then(row => {
             if(req.body.question)

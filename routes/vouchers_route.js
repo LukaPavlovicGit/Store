@@ -24,10 +24,6 @@ route.post('/vouchers', (req,res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.voucherValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
-
     Vouchers.create({
         user_id: req.body.user_id,
         value: req.body.value,

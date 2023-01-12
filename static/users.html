@@ -50,7 +50,7 @@
                 </div>
 
                 <div>
-                    <button type="button" id="user-create-button">Create user</button>
+                    <button class="user-create-button" type="button">Create user</button>
                 </div>
         </section>
         <section>
@@ -100,13 +100,11 @@
         </section>
         <section>
             <h2 class="section-header">ALL USERS</h2>
-            <div>
-                <button class="btn btn-get-users" type="button">GET USERS</button>
-            </div>
             <div class="table-div">
                <table border="3">
                    <thead>
                        <tr id="user-table-row-header">
+                           <th>Id</th>
                            <th>Role</th>
                            <th>First name</th>
                            <th>Last name</th>
@@ -115,7 +113,7 @@
                            <th>Email</th>
                        </tr>
                    </thead>
-                   <tbody id="user-table-body"></tbody>
+                   <tbody class="user-table-body"></tbody>
                </table>
            </div>
         </section>

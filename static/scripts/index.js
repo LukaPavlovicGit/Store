@@ -14,9 +14,6 @@ function init() {
     document.getElementById('delivery-button').addEventListener('click', e => {
         window.location.href = '/deliveries'
     })
-    document.getElementById('invoice-button').addEventListener('click', e => {
-        window.location.href = '/invoices'
-    })
     document.getElementById('comment-button').addEventListener('click', e => {
         window.location.href = '/comments'
     })

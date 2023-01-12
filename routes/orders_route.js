@@ -46,10 +46,6 @@ route.put('/orders/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.orderValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
-
     Orders.findOne({ include: ['articles'], where: { id: req.params.id } } )
         .then(row => {
             if(req.body.user_id)

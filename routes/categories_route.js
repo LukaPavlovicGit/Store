@@ -39,10 +39,6 @@ route.put('/categories/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
 
-    const validation = joi_validation.categoryValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
-
     Categories.findOne({ include: ['articles'], where: { id: req.params.id } } )
         .then(row => {
             if(req.body.name)

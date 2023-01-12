@@ -6,6 +6,8 @@ const token = cookies[cookies.length - 1]
 function init() {
     loadArticles()
     loadComments()
+    document.getElementById('btn-get-article-comments').addEventListener('click', commentsByArticleClicked)
+    document.getElementById('btn-get-all-comments').addEventListener('click', loadComments)
 }
 
 function loadArticles(){
@@ -93,7 +95,6 @@ function addCommentRow(comment){
     let text4 = document.createTextNode(`${comment.user_id}`);
     let text5 = document.createTextNode(`${comment.article_id}`);
 
-
     let btn = document.createElement('button')
     btn.innerText = 'REMOVE'
     btn.classList.add('btn-danger')
@@ -157,6 +158,15 @@ function commentsByArticle(article_id){
             document.getElementsByClassName('article-comment-table-body')[0].innerHTML = ''
             commentsByArticle.forEach(comment => addArticleCommentRow(comment))
         })
+}
+
+function commentsByArticleClicked(){
+    let article_id = document.getElementById('article-comment-article-id').value
+    if(!article_id){
+        alert('enter article id')
+        return
+    }
+    commentsByArticle(article_id)
 }
 
 function addArticleCommentRow(comment){
@@ -225,7 +235,6 @@ function deleteComment(event){
                 alert(res.message)
             else
                 loadComments()
-
         })
 }
 

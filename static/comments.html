@@ -38,7 +38,7 @@
                         <th>Price</th>
                     </tr>
                     </thead>
-                    <tbody id="article-table-body"></tbody>
+                    <tbody class="article-table-body"></tbody>
                 </table>
             </div>
         </section>
@@ -71,7 +71,7 @@
                     <input type="text" id="article-comment-article-id" name="comment-text" placeholder="id" required="">
                 </div>
                 <div class="update-comment-id">
-                    <button class="btn btn-get-article-comments" type="button">CLICK</button>
+                    <button id="btn-get-article-comments" type="button">CLICK</button>
                 </div>
                 <div class="table-div">
                     <table border="3">
@@ -84,14 +84,17 @@
                             <th>Article id</th>
                         </tr>
                         </thead>
-                        <tbody id="article-comment-table-body"></tbody>
+                        <tbody class="article-comment-table-body"></tbody>
                     </table>
                 </div>
             </div>
         </section>
         <section>
+            <h1>ALL COMMENTS</h1>
+            <div class="update-comment-id">
+                <button id="btn-get-all-comments" type="button">CLICK</button>
+            </div>
             <div class="table-div">
-                <h1>ALL COMMENTS</h1>
                 <table border="3">
                     <thead>
                     <tr id="comments-table-row-header">
@@ -102,7 +105,7 @@
                         <th>Article id</th>
                     </tr>
                     </thead>
-                    <tbody id="comment-table-body"></tbody>
+                    <tbody class="comment-table-body"></tbody>
                 </table>
             </div>
         </section>

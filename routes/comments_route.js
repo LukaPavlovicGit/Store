@@ -43,10 +43,6 @@ route.post('/comments', (req, res) => {
 })
 
 route.put('/comments/:id', (req, res) => {
-    const validation = joi_validation.commentValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
-
     Comments.findOne({where: {id: req.params.id}})
         .then(row => {
             if(req.user.id !== row.user_id)

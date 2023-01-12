@@ -17,7 +17,10 @@ function loadArticles(){
         }
     })
         .then(articles => articles.json())
-        .then(articles => articles.forEach(article => addArticleRow(article)))
+        .then(articles => {
+            document.getElementsByClassName('article-table-body')[0].innerHTML=''
+            articles.forEach(article => addArticleRow(article))
+        })
 }
 
 function createArticle(){

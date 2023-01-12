@@ -40,10 +40,6 @@ route.put('/users/:id', (req, res) => {
     if(req.user.role !== 'ADMIN')
         return res.status(401).json({message:'Unauthorized'})
 
-    const validation = joi_validation.userRegistrationValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
-
     Users.findOne({ include: ['comments','orders','reclamations','vouchers'], where: { id: req.params.id } })
         .then(row => {
             if(req.body.role)

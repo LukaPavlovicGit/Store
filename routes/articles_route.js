@@ -36,19 +36,13 @@ route.post('/articles', (req,res) => {
         name: req.body.name,
         price: req.body.price
     })
-        .then(row => {
-            res.json({article: row})
-        })
+        .then(row => res.json(row))
         .catch(err => res.status(500).json(err));
 })
 
 route.put('/articles/:id', (req, res) => {
     if(req.user.role !== "ADMIN" && req.user.role !== "MODERATOR")
         return res.status(401).json({message: 'Unauthorized'})
-
-    const validation = joi_validation.articleValidation(req.body)
-    if(validation.error)
-        return res.send({ message: validation.error.details[0].message })
 
     Articles.findOne({ include : ['comments'], where: { id: req.params.id } } )
         .then(row => {
