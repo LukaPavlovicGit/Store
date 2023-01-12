@@ -8,7 +8,7 @@ function init(){
     document.getElementsByClassName('btn btn-create-voucher')[0].addEventListener('click', createVoucher)
     document.getElementsByClassName('btn btn-update-voucher')[0].addEventListener('click', updateVoucher)
     document.getElementsByClassName('btn btn-create-voucher')[0].addEventListener('click', createVoucher)
-    document.getElementsByClassName('btn btn-get-vouchers')[0].addEventListener('click', getVouchers)
+    document.getElementsByClassName('btn btn-get-vouchers')[0].addEventListener('click', loadVouchers)
 }
 
 function loadUsers(){
@@ -101,12 +101,12 @@ function updateVoucher(){
             if (voucher.message)
                 alert(voucher.message)
             else
-                getVouchers()
+                loadVouchers()
 
         })
 }
 
-function getVouchers(){
+function loadVouchers(){
     fetch('http://localhost:8081/admin/vouchers', {
         headers: {
             'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ function deleteVoucher(event){
             if (res.message)
                 alert(res.message)
             else
-                getVouchers()
+                loadVouchers()
         });
 }
 

@@ -95,6 +95,14 @@ function orderValidation(order){
     return schema.validate(order)
 }
 
+function questionValidation(question){
+    const schema = Joi.object().keys({
+        question: Joi.string().required(),
+        answer: Joi.string().required()
+    })
+    return schema.validate(question)
+}
+
 module.exports = {
     userRegistrationValidation,
     userLoginValidation,
@@ -105,5 +113,6 @@ module.exports = {
     reclamationValidation,
     storeValidation,
     voucherValidation,
-    orderValidation
+    orderValidation,
+    questionValidation
 }

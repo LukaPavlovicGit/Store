@@ -48,75 +48,73 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/users', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('users.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
 })
 
 app.get('/articles', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('articles.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
+})
+
+app.get('/deliveries', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
+        res.sendFile('deliveries.html', { root: './static' })
+    else
+        res.status(401).send('Not authorized')
 })
 
 app.get('/comments', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('comments.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
 })
 
 app.get('/categories', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('categories.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
 })
 
 app.get('/orders', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('orders.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
 })
 
 app.get('/reclamations', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('reclamations.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
 })
 
 app.get('/stores', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('stores.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
 })
 
 app.get('/vouchers', authToken, (req, res) => {
-    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR') {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
         res.sendFile('vouchers.html', { root: './static' })
-    }
-    else {
+    else
         res.status(401).send('Not authorized')
-    }
+})
+
+app.get('/questions', authToken, (req, res) => {
+    if (req.user.role === 'ADMIN' || req.user.role === 'MODERATOR')
+        res.sendFile('questions.html', { root: './static' })
+    else
+        res.status(401).send('Not authorized')
 })
 
 

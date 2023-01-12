@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+</head>
+<body>
+    <section class="container content-section">
+        <h2 class="section-header">CREATE QUESTION</h2>
+        <div class="create-question-div">
+            <label for="create-question-question">Question:</label>
+            <input type="text" id="create-question-question" placeholder="question" required="">
+        </div>
+        <div class="create-question-div">
+            <label for="create-question-answer">Answer:</label>
+            <input type="text" id="create-question-answer" placeholder="answer" required="">
+        </div>
+        <div>
+            <button class="btn btn-create-question" type="button">CREATE</button>
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">UPDATE QUESTION</h2>
+        <div class="create-question-div">
+            <label for="update-question-id">Id:</label>
+            <input type="text" id="update-question-id" placeholder="id" required="">
+        </div>
+        <div class="create-question-div">
+            <label for="update-question-question">Question:</label>
+            <input type="text" id="update-question-question" placeholder="question" required="">
+        </div>
+        <div class="create-question-div">
+            <label for="update-question-answer">Answer:</label>
+            <input type="text" id="update-question-answer" placeholder="answer" required="">
+        </div>
+        <div>
+            <button class="btn btn-update-question" type="button">UPDATE</button>
+        </div>
+    </section>
+    <section class="container content-section">
+        <div class="table-div">
+            <h2 class="table-div-header">FREQUENTLY ASKED QUESTIONS</h2>
+            <table border="3">
+                <thead>
+                <tr id="user-table-row-header">
+                    <th>Id</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+                </thead>
+                <tbody class="question-table-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="scripts/question.js"></script>
+</body>
+</html>
